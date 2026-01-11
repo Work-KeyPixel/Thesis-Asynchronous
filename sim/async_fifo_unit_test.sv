@@ -43,7 +43,7 @@ module async_fifo_unit_test;
         .ASIZE        (ASIZE),
         .FALLTHROUGH  (FALLTHROUGH)
     )
-    dut
+    async_fifo_dut
     (
         wclk,
         wrst_n,
@@ -58,7 +58,7 @@ module async_fifo_unit_test;
         rempty,
         arempty
     );
-
+    
     // An example to create a clock
     initial wclk = 1'b0;
     always #2 wclk <= ~wclk;
@@ -66,9 +66,17 @@ module async_fifo_unit_test;
     always #3 rclk <= ~rclk;
 
     // An example to dump data for visualization
+    //initial begin
+    //   $dumpfile("async_fifo_unit_test.vcd");
+    //   $dumpvars(0, async_fifo_unit_test);
+    //   $dumpvars(0, async_bidir_fifo);
+    //end
+
     initial begin
-        $dumpfile("async_fifo_unit_test.vcd");
-        $dumpvars(0, async_fifo_unit_test);
+    $dumpfile("async_fifo_unit_test.vcd"); 
+    $dumpvars(0, async_fifo_dut);      // moduel async_fifo
+    //$dumpvars(0, async_bidir_fifo);          // dump module FIFO 2 kênh
+    //$dumpvars(0, async_bidir_ramif_fifo); // Dump module FIFO duplex với RAM interface
     end
 
     task setup(msg="Setup testcase");
@@ -260,6 +268,8 @@ module async_fifo_unit_test;
     `UNIT_TEST_END
 
     `TEST_SUITE_END
+
+    
 
 endmodule
 

@@ -7,19 +7,19 @@
 module wptr_full
 
 	#(
-		parameter ADDRSIZE = 4
+		parameter ADDRSIZE = 4 // số bit địa chỉ cho memory (Depth = 2^ADDRSIZE)
 	)(
-		input  wire                wclk,
-		input  wire                wrst_n,
-		input  wire                winc,
-		input  wire [ADDRSIZE  :0] wq2_rptr,
-		output reg                 wfull,
-		output reg                 awfull,
-		output wire [ADDRSIZE-1:0] waddr,
-		output reg  [ADDRSIZE  :0] wptr
-	);
+		input  wire                wclk, // write clock domain
+		input  wire                wrst_n, // reset write domain (active low)
+		input  wire                winc, // dùng để yêu cầu ghi dữ liệu vào FIFO và tăng write pointer 
+		input  wire [ADDRSIZE  :0] wq2_rptr, // read pointer đồng bộ sang write domain (GRAY, width = ADDRSIZE:0)
+		output reg                 wfull, // cờ FIFO full (không cho ghi thêm)
+		output reg                 awfull, // cờ almost full (thông báo gần đầy)
+		output wire [ADDRSIZE-1:0] waddr, // output address (binary, width ADDRSIZE)
+		output reg  [ADDRSIZE  :0] wptr // write poiter dạng Gray code, gửi sang read domain để kiểm tra full 
+    );
 
-    reg  [ADDRSIZE:0] wbin;
+    reg  [ADDRSIZE:0] wbin; // con trỏ ghi ở dạng binary (sử dụng cho địa chỉ waddr)
     wire [ADDRSIZE:0] wgraynext, wbinnext, wgraynextp1;
     wire              awfull_val, wfull_val;
 
@@ -39,16 +39,13 @@ module wptr_full
     assign wgraynext = (wbinnext >> 1) ^ wbinnext;
     assign wgraynextp1 = ((wbinnext + 1'b1) >> 1) ^ (wbinnext + 1'b1);
 
-    //------------------------------------------------------------------
-    // Simplified version of the three necessary full-tests:
-    // assign wfull_val=((wgnext[ADDRSIZE] !=wq2_rptr[ADDRSIZE] ) &&
-    //                   (wgnext[ADDRSIZE-1]  !=wq2_rptr[ADDRSIZE-1]) &&
-    // (wgnext[ADDRSIZE-2:0]==wq2_rptr[ADDRSIZE-2:0]));
-    //------------------------------------------------------------------
-
+    // Cách phát hiện full (vật lý ở write side)
+    // Đảo đúng 2 bit cao nhất là điều kiện chuẩn
      assign wfull_val = (wgraynext == {~wq2_rptr[ADDRSIZE:ADDRSIZE-1],wq2_rptr[ADDRSIZE-2:0]});
-     assign awfull_val = (wgraynextp1 == {~wq2_rptr[ADDRSIZE:ADDRSIZE-1],wq2_rptr[ADDRSIZE-2:0]});
+     assign awfull_val = (wgraynextp1 == {~wq2_rptr[ADDRSIZE:ADDRSIZE-1],wq2_rptr[ADDRSIZE-2:0]}); // để biết nếu viết thêm 1 thì sẽ full -> almost full 
 
+
+    // Gán flags trên xung clock (không cấp trực tiếp combinational ra, tránh glitch)
      always @(posedge wclk or negedge wrst_n) begin
 
         if (!wrst_n) begin
@@ -58,8 +55,8 @@ module wptr_full
             awfull <= awfull_val;
             wfull  <= wfull_val;
         end
-    end
+    end 
 
-endmodule
+endmodule 
 
 `resetall
