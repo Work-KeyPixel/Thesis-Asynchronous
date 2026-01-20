@@ -260,8 +260,6 @@ module async_fifo(wclk, wrst_n, winc, wdata, wfull, awfull, rclk, rrst_n, rinc, 
   wire _256_;
   wire _257_;
   wire _258_;
-  wire _259_;
-  wire _260_;
   output arempty;
   output awfull;
   wire [7:0] \fifomem.mem[0] ;
@@ -306,2702 +304,2670 @@ module async_fifo(wclk, wrst_n, winc, wdata, wfull, awfull, rclk, rrst_n, rinc, 
   wire \wptr_full.wfull_val ;
   wire [4:0] \wptr_full.wgraynext ;
   input wrst_n;
-  sky130_fd_sc_hd__nor2b_1 _261_ (
+  sky130_fd_sc_hd__nor2b_1 _259_ (
     .A(wfull),
     .B_N(winc),
     .Y(_128_)
   );
-  sky130_fd_sc_hd__o21ai_0 _262_ (
-    .A1(\fifomem.waddr [2]),
-    .A2(\fifomem.waddr [3]),
-    .B1(_128_),
+  sky130_fd_sc_hd__nand2_1 _260_ (
+    .A(\fifomem.waddr [0]),
+    .B(_128_),
     .Y(_129_)
   );
-  sky130_fd_sc_hd__nand2_1 _263_ (
-    .A(\fifomem.waddr [0]),
+  sky130_fd_sc_hd__nand2_1 _261_ (
+    .A(\fifomem.waddr [1]),
     .B(_128_),
     .Y(_130_)
   );
-  sky130_fd_sc_hd__nand2_1 _264_ (
-    .A(\fifomem.waddr [1]),
-    .B(_128_),
+  sky130_fd_sc_hd__o21ai_0 _262_ (
+    .A1(\fifomem.waddr [0]),
+    .A2(\fifomem.waddr [1]),
+    .B1(_128_),
     .Y(_131_)
   );
-  sky130_fd_sc_hd__o21ai_0 _265_ (
-    .A1(\fifomem.waddr [0]),
-    .A2(\fifomem.waddr [1]),
-    .B1(_128_),
+  sky130_fd_sc_hd__nand2_1 _263_ (
+    .A(\fifomem.waddr [2]),
+    .B(_128_),
     .Y(_132_)
   );
-  sky130_fd_sc_hd__o41ai_1 _266_ (
-    .A1(\fifomem.waddr [0]),
-    .A2(\fifomem.waddr [1]),
-    .A3(\fifomem.waddr [2]),
-    .A4(\fifomem.waddr [3]),
-    .B1(_128_),
-    .Y(_133_)
+  sky130_fd_sc_hd__and3b_1 _264_ (
+    .A_N(\fifomem.waddr [3]),
+    .B(_128_),
+    .C(\fifomem.waddr [2]),
+    .X(_133_)
   );
-  sky130_fd_sc_hd__nand2_1 _267_ (
-    .A(_128_),
+  sky130_fd_sc_hd__nand2_1 _265_ (
+    .A(_131_),
     .B(_133_),
     .Y(_134_)
   );
-  sky130_fd_sc_hd__and2_0 _268_ (
+  sky130_fd_sc_hd__and2_0 _266_ (
     .A(wdata[0]),
     .B(_128_),
     .X(_135_)
   );
-  sky130_fd_sc_hd__a22o_1 _269_ (
-    .A1(\fifomem.mem[0] [0]),
-    .A2(_134_),
-    .B1(_135_),
-    .B2(_133_),
-    .X(_000_)
-  );
-  sky130_fd_sc_hd__mux2_1 _270_ (
-    .A0(wdata[1]),
-    .A1(\fifomem.mem[0] [1]),
+  sky130_fd_sc_hd__mux2_1 _267_ (
+    .A0(_135_),
+    .A1(\fifomem.mem[4] [0]),
     .S(_134_),
-    .X(_001_)
+    .X(_080_)
+  );
+  sky130_fd_sc_hd__and2_0 _268_ (
+    .A(wdata[1]),
+    .B(_128_),
+    .X(_136_)
+  );
+  sky130_fd_sc_hd__mux2_1 _269_ (
+    .A0(_136_),
+    .A1(\fifomem.mem[4] [1]),
+    .S(_134_),
+    .X(_081_)
+  );
+  sky130_fd_sc_hd__and2_0 _270_ (
+    .A(wdata[2]),
+    .B(_128_),
+    .X(_137_)
   );
   sky130_fd_sc_hd__mux2_1 _271_ (
-    .A0(wdata[2]),
-    .A1(\fifomem.mem[0] [2]),
+    .A0(_137_),
+    .A1(\fifomem.mem[4] [2]),
     .S(_134_),
-    .X(_002_)
+    .X(_082_)
   );
   sky130_fd_sc_hd__and2_0 _272_ (
     .A(wdata[3]),
     .B(_128_),
-    .X(_136_)
+    .X(_138_)
   );
-  sky130_fd_sc_hd__a22o_1 _273_ (
-    .A1(\fifomem.mem[0] [3]),
-    .A2(_134_),
-    .B1(_136_),
-    .B2(_133_),
-    .X(_003_)
+  sky130_fd_sc_hd__mux2_1 _273_ (
+    .A0(_138_),
+    .A1(\fifomem.mem[4] [3]),
+    .S(_134_),
+    .X(_083_)
   );
   sky130_fd_sc_hd__and2_0 _274_ (
     .A(wdata[4]),
     .B(_128_),
-    .X(_137_)
+    .X(_139_)
   );
-  sky130_fd_sc_hd__a22o_1 _275_ (
-    .A1(\fifomem.mem[0] [4]),
-    .A2(_134_),
-    .B1(_137_),
-    .B2(_133_),
-    .X(_004_)
+  sky130_fd_sc_hd__mux2_1 _275_ (
+    .A0(_139_),
+    .A1(\fifomem.mem[4] [4]),
+    .S(_134_),
+    .X(_084_)
   );
   sky130_fd_sc_hd__and2_0 _276_ (
     .A(wdata[5]),
     .B(_128_),
-    .X(_138_)
-  );
-  sky130_fd_sc_hd__a22o_1 _277_ (
-    .A1(\fifomem.mem[0] [5]),
-    .A2(_134_),
-    .B1(_138_),
-    .B2(_133_),
-    .X(_005_)
-  );
-  sky130_fd_sc_hd__mux2_1 _278_ (
-    .A0(wdata[6]),
-    .A1(\fifomem.mem[0] [6]),
-    .S(_134_),
-    .X(_006_)
-  );
-  sky130_fd_sc_hd__and2_0 _279_ (
-    .A(wdata[7]),
-    .B(_128_),
-    .X(_139_)
-  );
-  sky130_fd_sc_hd__a22o_1 _280_ (
-    .A1(\fifomem.mem[0] [7]),
-    .A2(_134_),
-    .B1(_139_),
-    .B2(_133_),
-    .X(_007_)
-  );
-  sky130_fd_sc_hd__and3b_1 _281_ (
-    .A_N(\fifomem.waddr [0]),
-    .B(\fifomem.waddr [1]),
-    .C(_128_),
     .X(_140_)
   );
-  sky130_fd_sc_hd__nand2_1 _282_ (
-    .A(_129_),
-    .B(_140_),
-    .Y(_141_)
+  sky130_fd_sc_hd__mux2_1 _277_ (
+    .A0(_140_),
+    .A1(\fifomem.mem[4] [5]),
+    .S(_134_),
+    .X(_085_)
   );
-  sky130_fd_sc_hd__mux2_1 _283_ (
-    .A0(_135_),
-    .A1(\fifomem.mem[2] [0]),
-    .S(_141_),
-    .X(_064_)
+  sky130_fd_sc_hd__and2_0 _278_ (
+    .A(wdata[6]),
+    .B(_128_),
+    .X(_141_)
   );
-  sky130_fd_sc_hd__and2_0 _284_ (
-    .A(wdata[1]),
+  sky130_fd_sc_hd__mux2_1 _279_ (
+    .A0(_141_),
+    .A1(\fifomem.mem[4] [6]),
+    .S(_134_),
+    .X(_086_)
+  );
+  sky130_fd_sc_hd__and2_0 _280_ (
+    .A(wdata[7]),
     .B(_128_),
     .X(_142_)
   );
-  sky130_fd_sc_hd__mux2_1 _285_ (
+  sky130_fd_sc_hd__mux2_1 _281_ (
     .A0(_142_),
-    .A1(\fifomem.mem[2] [1]),
-    .S(_141_),
-    .X(_065_)
-  );
-  sky130_fd_sc_hd__and2_0 _286_ (
-    .A(wdata[2]),
-    .B(_128_),
-    .X(_143_)
-  );
-  sky130_fd_sc_hd__mux2_1 _287_ (
-    .A0(_143_),
-    .A1(\fifomem.mem[2] [2]),
-    .S(_141_),
-    .X(_066_)
-  );
-  sky130_fd_sc_hd__mux2_1 _288_ (
-    .A0(_136_),
-    .A1(\fifomem.mem[2] [3]),
-    .S(_141_),
-    .X(_067_)
-  );
-  sky130_fd_sc_hd__mux2_1 _289_ (
-    .A0(_137_),
-    .A1(\fifomem.mem[2] [4]),
-    .S(_141_),
-    .X(_068_)
-  );
-  sky130_fd_sc_hd__mux2_1 _290_ (
-    .A0(_138_),
-    .A1(\fifomem.mem[2] [5]),
-    .S(_141_),
-    .X(_069_)
-  );
-  sky130_fd_sc_hd__and2_0 _291_ (
-    .A(wdata[6]),
-    .B(_128_),
-    .X(_144_)
-  );
-  sky130_fd_sc_hd__mux2_1 _292_ (
-    .A0(_144_),
-    .A1(\fifomem.mem[2] [6]),
-    .S(_141_),
-    .X(_070_)
-  );
-  sky130_fd_sc_hd__mux2_1 _293_ (
-    .A0(_139_),
-    .A1(\fifomem.mem[2] [7]),
-    .S(_141_),
-    .X(_071_)
-  );
-  sky130_fd_sc_hd__and3b_1 _294_ (
-    .A_N(\fifomem.waddr [1]),
-    .B(_128_),
-    .C(\fifomem.waddr [0]),
-    .X(_145_)
-  );
-  sky130_fd_sc_hd__nand2_1 _295_ (
-    .A(_129_),
-    .B(_145_),
-    .Y(_146_)
-  );
-  sky130_fd_sc_hd__mux2_1 _296_ (
-    .A0(_135_),
-    .A1(\fifomem.mem[1] [0]),
-    .S(_146_),
-    .X(_056_)
-  );
-  sky130_fd_sc_hd__mux2_1 _297_ (
-    .A0(_142_),
-    .A1(\fifomem.mem[1] [1]),
-    .S(_146_),
-    .X(_057_)
-  );
-  sky130_fd_sc_hd__mux2_1 _298_ (
-    .A0(_143_),
-    .A1(\fifomem.mem[1] [2]),
-    .S(_146_),
-    .X(_058_)
-  );
-  sky130_fd_sc_hd__mux2_1 _299_ (
-    .A0(_136_),
-    .A1(\fifomem.mem[1] [3]),
-    .S(_146_),
-    .X(_059_)
-  );
-  sky130_fd_sc_hd__mux2_1 _300_ (
-    .A0(_137_),
-    .A1(\fifomem.mem[1] [4]),
-    .S(_146_),
-    .X(_060_)
-  );
-  sky130_fd_sc_hd__mux2_1 _301_ (
-    .A0(_138_),
-    .A1(\fifomem.mem[1] [5]),
-    .S(_146_),
-    .X(_061_)
-  );
-  sky130_fd_sc_hd__mux2_1 _302_ (
-    .A0(_144_),
-    .A1(\fifomem.mem[1] [6]),
-    .S(_146_),
-    .X(_062_)
-  );
-  sky130_fd_sc_hd__mux2_1 _303_ (
-    .A0(_139_),
-    .A1(\fifomem.mem[1] [7]),
-    .S(_146_),
-    .X(_063_)
-  );
-  sky130_fd_sc_hd__nand3_1 _304_ (
-    .A(\fifomem.waddr [0]),
-    .B(\fifomem.waddr [1]),
-    .C(_128_),
-    .Y(_147_)
-  );
-  sky130_fd_sc_hd__nand4_1 _305_ (
-    .A(\fifomem.waddr [0]),
-    .B(\fifomem.waddr [1]),
-    .C(_128_),
-    .D(_129_),
-    .Y(_148_)
-  );
-  sky130_fd_sc_hd__mux2_1 _306_ (
-    .A0(_135_),
-    .A1(\fifomem.mem[3] [0]),
-    .S(_148_),
-    .X(_072_)
-  );
-  sky130_fd_sc_hd__mux2_1 _307_ (
-    .A0(_142_),
-    .A1(\fifomem.mem[3] [1]),
-    .S(_148_),
-    .X(_073_)
-  );
-  sky130_fd_sc_hd__mux2_1 _308_ (
-    .A0(_143_),
-    .A1(\fifomem.mem[3] [2]),
-    .S(_148_),
-    .X(_074_)
-  );
-  sky130_fd_sc_hd__mux2_1 _309_ (
-    .A0(_136_),
-    .A1(\fifomem.mem[3] [3]),
-    .S(_148_),
-    .X(_075_)
-  );
-  sky130_fd_sc_hd__mux2_1 _310_ (
-    .A0(_137_),
-    .A1(\fifomem.mem[3] [4]),
-    .S(_148_),
-    .X(_076_)
-  );
-  sky130_fd_sc_hd__mux2_1 _311_ (
-    .A0(_138_),
-    .A1(\fifomem.mem[3] [5]),
-    .S(_148_),
-    .X(_077_)
-  );
-  sky130_fd_sc_hd__mux2_1 _312_ (
-    .A0(_144_),
-    .A1(\fifomem.mem[3] [6]),
-    .S(_148_),
-    .X(_078_)
-  );
-  sky130_fd_sc_hd__mux2_1 _313_ (
-    .A0(_139_),
-    .A1(\fifomem.mem[3] [7]),
-    .S(_148_),
-    .X(_079_)
-  );
-  sky130_fd_sc_hd__and3b_1 _314_ (
-    .A_N(\fifomem.waddr [3]),
-    .B(_128_),
-    .C(\fifomem.waddr [2]),
-    .X(_149_)
-  );
-  sky130_fd_sc_hd__nand2_1 _315_ (
-    .A(_145_),
-    .B(_149_),
-    .Y(_150_)
-  );
-  sky130_fd_sc_hd__mux2_1 _316_ (
-    .A0(_135_),
-    .A1(\fifomem.mem[5] [0]),
-    .S(_150_),
-    .X(_088_)
-  );
-  sky130_fd_sc_hd__mux2_1 _317_ (
-    .A0(_142_),
-    .A1(\fifomem.mem[5] [1]),
-    .S(_150_),
-    .X(_089_)
-  );
-  sky130_fd_sc_hd__mux2_1 _318_ (
-    .A0(_143_),
-    .A1(\fifomem.mem[5] [2]),
-    .S(_150_),
-    .X(_090_)
-  );
-  sky130_fd_sc_hd__mux2_1 _319_ (
-    .A0(_136_),
-    .A1(\fifomem.mem[5] [3]),
-    .S(_150_),
-    .X(_091_)
-  );
-  sky130_fd_sc_hd__mux2_1 _320_ (
-    .A0(_137_),
-    .A1(\fifomem.mem[5] [4]),
-    .S(_150_),
-    .X(_092_)
-  );
-  sky130_fd_sc_hd__mux2_1 _321_ (
-    .A0(_138_),
-    .A1(\fifomem.mem[5] [5]),
-    .S(_150_),
-    .X(_093_)
-  );
-  sky130_fd_sc_hd__mux2_1 _322_ (
-    .A0(_144_),
-    .A1(\fifomem.mem[5] [6]),
-    .S(_150_),
-    .X(_094_)
-  );
-  sky130_fd_sc_hd__mux2_1 _323_ (
-    .A0(_139_),
-    .A1(\fifomem.mem[5] [7]),
-    .S(_150_),
-    .X(_095_)
-  );
-  sky130_fd_sc_hd__nand2_1 _324_ (
-    .A(_132_),
-    .B(_149_),
-    .Y(_151_)
-  );
-  sky130_fd_sc_hd__mux2_1 _325_ (
-    .A0(_135_),
-    .A1(\fifomem.mem[4] [0]),
-    .S(_151_),
-    .X(_080_)
-  );
-  sky130_fd_sc_hd__mux2_1 _326_ (
-    .A0(_142_),
-    .A1(\fifomem.mem[4] [1]),
-    .S(_151_),
-    .X(_081_)
-  );
-  sky130_fd_sc_hd__mux2_1 _327_ (
-    .A0(_143_),
-    .A1(\fifomem.mem[4] [2]),
-    .S(_151_),
-    .X(_082_)
-  );
-  sky130_fd_sc_hd__mux2_1 _328_ (
-    .A0(_136_),
-    .A1(\fifomem.mem[4] [3]),
-    .S(_151_),
-    .X(_083_)
-  );
-  sky130_fd_sc_hd__mux2_1 _329_ (
-    .A0(_137_),
-    .A1(\fifomem.mem[4] [4]),
-    .S(_151_),
-    .X(_084_)
-  );
-  sky130_fd_sc_hd__mux2_1 _330_ (
-    .A0(_138_),
-    .A1(\fifomem.mem[4] [5]),
-    .S(_151_),
-    .X(_085_)
-  );
-  sky130_fd_sc_hd__mux2_1 _331_ (
-    .A0(_144_),
-    .A1(\fifomem.mem[4] [6]),
-    .S(_151_),
-    .X(_086_)
-  );
-  sky130_fd_sc_hd__mux2_1 _332_ (
-    .A0(_139_),
     .A1(\fifomem.mem[4] [7]),
-    .S(_151_),
+    .S(_134_),
     .X(_087_)
   );
-  sky130_fd_sc_hd__nor2b_1 _333_ (
-    .A(_147_),
-    .B_N(_149_),
-    .Y(_152_)
+  sky130_fd_sc_hd__nand3_1 _282_ (
+    .A(\fifomem.waddr [0]),
+    .B(\fifomem.waddr [1]),
+    .C(_128_),
+    .Y(_143_)
   );
-  sky130_fd_sc_hd__mux2_1 _334_ (
-    .A0(\fifomem.mem[7] [0]),
-    .A1(_135_),
-    .S(_152_),
-    .X(_104_)
+  sky130_fd_sc_hd__o21ai_0 _283_ (
+    .A1(\fifomem.waddr [2]),
+    .A2(\fifomem.waddr [3]),
+    .B1(_128_),
+    .Y(_144_)
   );
-  sky130_fd_sc_hd__mux2_1 _335_ (
-    .A0(\fifomem.mem[7] [1]),
-    .A1(_142_),
-    .S(_152_),
-    .X(_105_)
+  sky130_fd_sc_hd__nand2b_1 _284_ (
+    .A_N(_143_),
+    .B(_144_),
+    .Y(_145_)
   );
-  sky130_fd_sc_hd__mux2_1 _336_ (
-    .A0(\fifomem.mem[7] [2]),
-    .A1(_143_),
-    .S(_152_),
-    .X(_106_)
+  sky130_fd_sc_hd__mux2_1 _285_ (
+    .A0(_135_),
+    .A1(\fifomem.mem[3] [0]),
+    .S(_145_),
+    .X(_072_)
   );
-  sky130_fd_sc_hd__mux2_1 _337_ (
-    .A0(\fifomem.mem[7] [3]),
-    .A1(_136_),
-    .S(_152_),
-    .X(_107_)
+  sky130_fd_sc_hd__mux2_1 _286_ (
+    .A0(_136_),
+    .A1(\fifomem.mem[3] [1]),
+    .S(_145_),
+    .X(_073_)
   );
-  sky130_fd_sc_hd__mux2_1 _338_ (
-    .A0(\fifomem.mem[7] [4]),
-    .A1(_137_),
-    .S(_152_),
-    .X(_108_)
+  sky130_fd_sc_hd__mux2_1 _287_ (
+    .A0(_137_),
+    .A1(\fifomem.mem[3] [2]),
+    .S(_145_),
+    .X(_074_)
   );
-  sky130_fd_sc_hd__mux2_1 _339_ (
-    .A0(\fifomem.mem[7] [5]),
-    .A1(_138_),
-    .S(_152_),
-    .X(_109_)
+  sky130_fd_sc_hd__mux2_1 _288_ (
+    .A0(_138_),
+    .A1(\fifomem.mem[3] [3]),
+    .S(_145_),
+    .X(_075_)
   );
-  sky130_fd_sc_hd__mux2_1 _340_ (
-    .A0(\fifomem.mem[7] [6]),
-    .A1(_144_),
-    .S(_152_),
-    .X(_110_)
+  sky130_fd_sc_hd__mux2_1 _289_ (
+    .A0(_139_),
+    .A1(\fifomem.mem[3] [4]),
+    .S(_145_),
+    .X(_076_)
   );
-  sky130_fd_sc_hd__mux2_1 _341_ (
-    .A0(\fifomem.mem[7] [7]),
-    .A1(_139_),
-    .S(_152_),
-    .X(_111_)
+  sky130_fd_sc_hd__mux2_1 _290_ (
+    .A0(_140_),
+    .A1(\fifomem.mem[3] [5]),
+    .S(_145_),
+    .X(_077_)
   );
-  sky130_fd_sc_hd__and3b_1 _342_ (
+  sky130_fd_sc_hd__mux2_1 _291_ (
+    .A0(_141_),
+    .A1(\fifomem.mem[3] [6]),
+    .S(_145_),
+    .X(_078_)
+  );
+  sky130_fd_sc_hd__mux2_1 _292_ (
+    .A0(_142_),
+    .A1(\fifomem.mem[3] [7]),
+    .S(_145_),
+    .X(_079_)
+  );
+  sky130_fd_sc_hd__and3b_1 _293_ (
+    .A_N(\fifomem.waddr [0]),
+    .B(\fifomem.waddr [1]),
+    .C(_128_),
+    .X(_146_)
+  );
+  sky130_fd_sc_hd__nand2_1 _294_ (
+    .A(_144_),
+    .B(_146_),
+    .Y(_147_)
+  );
+  sky130_fd_sc_hd__mux2_1 _295_ (
+    .A0(_135_),
+    .A1(\fifomem.mem[2] [0]),
+    .S(_147_),
+    .X(_064_)
+  );
+  sky130_fd_sc_hd__mux2_1 _296_ (
+    .A0(_136_),
+    .A1(\fifomem.mem[2] [1]),
+    .S(_147_),
+    .X(_065_)
+  );
+  sky130_fd_sc_hd__mux2_1 _297_ (
+    .A0(_137_),
+    .A1(\fifomem.mem[2] [2]),
+    .S(_147_),
+    .X(_066_)
+  );
+  sky130_fd_sc_hd__mux2_1 _298_ (
+    .A0(_138_),
+    .A1(\fifomem.mem[2] [3]),
+    .S(_147_),
+    .X(_067_)
+  );
+  sky130_fd_sc_hd__mux2_1 _299_ (
+    .A0(_139_),
+    .A1(\fifomem.mem[2] [4]),
+    .S(_147_),
+    .X(_068_)
+  );
+  sky130_fd_sc_hd__mux2_1 _300_ (
+    .A0(_140_),
+    .A1(\fifomem.mem[2] [5]),
+    .S(_147_),
+    .X(_069_)
+  );
+  sky130_fd_sc_hd__mux2_1 _301_ (
+    .A0(_141_),
+    .A1(\fifomem.mem[2] [6]),
+    .S(_147_),
+    .X(_070_)
+  );
+  sky130_fd_sc_hd__mux2_1 _302_ (
+    .A0(_142_),
+    .A1(\fifomem.mem[2] [7]),
+    .S(_147_),
+    .X(_071_)
+  );
+  sky130_fd_sc_hd__and3b_1 _303_ (
     .A_N(\fifomem.waddr [2]),
     .B(\fifomem.waddr [3]),
     .C(_128_),
-    .X(_153_)
+    .X(_148_)
   );
-  sky130_fd_sc_hd__nand2_1 _343_ (
-    .A(_132_),
-    .B(_153_),
-    .Y(_154_)
+  sky130_fd_sc_hd__nand2_1 _304_ (
+    .A(_131_),
+    .B(_148_),
+    .Y(_149_)
   );
-  sky130_fd_sc_hd__mux2_1 _344_ (
+  sky130_fd_sc_hd__mux2_1 _305_ (
     .A0(_135_),
     .A1(\fifomem.mem[8] [0]),
-    .S(_154_),
+    .S(_149_),
     .X(_112_)
   );
-  sky130_fd_sc_hd__mux2_1 _345_ (
-    .A0(_142_),
+  sky130_fd_sc_hd__mux2_1 _306_ (
+    .A0(_136_),
     .A1(\fifomem.mem[8] [1]),
-    .S(_154_),
+    .S(_149_),
     .X(_113_)
   );
-  sky130_fd_sc_hd__mux2_1 _346_ (
-    .A0(_143_),
+  sky130_fd_sc_hd__mux2_1 _307_ (
+    .A0(_137_),
     .A1(\fifomem.mem[8] [2]),
-    .S(_154_),
+    .S(_149_),
     .X(_114_)
   );
-  sky130_fd_sc_hd__mux2_1 _347_ (
-    .A0(_136_),
+  sky130_fd_sc_hd__mux2_1 _308_ (
+    .A0(_138_),
     .A1(\fifomem.mem[8] [3]),
-    .S(_154_),
+    .S(_149_),
     .X(_115_)
   );
-  sky130_fd_sc_hd__mux2_1 _348_ (
-    .A0(_137_),
+  sky130_fd_sc_hd__mux2_1 _309_ (
+    .A0(_139_),
     .A1(\fifomem.mem[8] [4]),
-    .S(_154_),
+    .S(_149_),
     .X(_116_)
   );
-  sky130_fd_sc_hd__mux2_1 _349_ (
-    .A0(_138_),
+  sky130_fd_sc_hd__mux2_1 _310_ (
+    .A0(_140_),
     .A1(\fifomem.mem[8] [5]),
-    .S(_154_),
+    .S(_149_),
     .X(_117_)
   );
-  sky130_fd_sc_hd__mux2_1 _350_ (
-    .A0(_144_),
+  sky130_fd_sc_hd__mux2_1 _311_ (
+    .A0(_141_),
     .A1(\fifomem.mem[8] [6]),
-    .S(_154_),
+    .S(_149_),
     .X(_118_)
   );
-  sky130_fd_sc_hd__mux2_1 _351_ (
-    .A0(_139_),
+  sky130_fd_sc_hd__mux2_1 _312_ (
+    .A0(_142_),
     .A1(\fifomem.mem[8] [7]),
-    .S(_154_),
+    .S(_149_),
     .X(_119_)
   );
-  sky130_fd_sc_hd__nand2_1 _352_ (
-    .A(_140_),
-    .B(_149_),
-    .Y(_155_)
+  sky130_fd_sc_hd__nor3_1 _313_ (
+    .A(\fifomem.waddr [3]),
+    .B(_132_),
+    .C(_143_),
+    .Y(_150_)
   );
-  sky130_fd_sc_hd__mux2_1 _353_ (
+  sky130_fd_sc_hd__mux2_1 _314_ (
+    .A0(\fifomem.mem[7] [0]),
+    .A1(_135_),
+    .S(_150_),
+    .X(_104_)
+  );
+  sky130_fd_sc_hd__mux2_1 _315_ (
+    .A0(\fifomem.mem[7] [1]),
+    .A1(_136_),
+    .S(_150_),
+    .X(_105_)
+  );
+  sky130_fd_sc_hd__mux2_1 _316_ (
+    .A0(\fifomem.mem[7] [2]),
+    .A1(_137_),
+    .S(_150_),
+    .X(_106_)
+  );
+  sky130_fd_sc_hd__mux2_1 _317_ (
+    .A0(\fifomem.mem[7] [3]),
+    .A1(_138_),
+    .S(_150_),
+    .X(_107_)
+  );
+  sky130_fd_sc_hd__mux2_1 _318_ (
+    .A0(\fifomem.mem[7] [4]),
+    .A1(_139_),
+    .S(_150_),
+    .X(_108_)
+  );
+  sky130_fd_sc_hd__mux2_1 _319_ (
+    .A0(\fifomem.mem[7] [5]),
+    .A1(_140_),
+    .S(_150_),
+    .X(_109_)
+  );
+  sky130_fd_sc_hd__mux2_1 _320_ (
+    .A0(\fifomem.mem[7] [6]),
+    .A1(_141_),
+    .S(_150_),
+    .X(_110_)
+  );
+  sky130_fd_sc_hd__mux2_1 _321_ (
+    .A0(\fifomem.mem[7] [7]),
+    .A1(_142_),
+    .S(_150_),
+    .X(_111_)
+  );
+  sky130_fd_sc_hd__nand2_1 _322_ (
+    .A(_133_),
+    .B(_146_),
+    .Y(_151_)
+  );
+  sky130_fd_sc_hd__mux2_1 _323_ (
     .A0(_135_),
     .A1(\fifomem.mem[6] [0]),
-    .S(_155_),
+    .S(_151_),
     .X(_096_)
   );
-  sky130_fd_sc_hd__mux2_1 _354_ (
-    .A0(_142_),
+  sky130_fd_sc_hd__mux2_1 _324_ (
+    .A0(_136_),
     .A1(\fifomem.mem[6] [1]),
-    .S(_155_),
+    .S(_151_),
     .X(_097_)
   );
-  sky130_fd_sc_hd__mux2_1 _355_ (
-    .A0(_143_),
+  sky130_fd_sc_hd__mux2_1 _325_ (
+    .A0(_137_),
     .A1(\fifomem.mem[6] [2]),
-    .S(_155_),
+    .S(_151_),
     .X(_098_)
   );
-  sky130_fd_sc_hd__mux2_1 _356_ (
-    .A0(_136_),
+  sky130_fd_sc_hd__mux2_1 _326_ (
+    .A0(_138_),
     .A1(\fifomem.mem[6] [3]),
-    .S(_155_),
+    .S(_151_),
     .X(_099_)
   );
-  sky130_fd_sc_hd__mux2_1 _357_ (
-    .A0(_137_),
+  sky130_fd_sc_hd__mux2_1 _327_ (
+    .A0(_139_),
     .A1(\fifomem.mem[6] [4]),
-    .S(_155_),
+    .S(_151_),
     .X(_100_)
   );
-  sky130_fd_sc_hd__mux2_1 _358_ (
-    .A0(_138_),
+  sky130_fd_sc_hd__mux2_1 _328_ (
+    .A0(_140_),
     .A1(\fifomem.mem[6] [5]),
-    .S(_155_),
+    .S(_151_),
     .X(_101_)
   );
-  sky130_fd_sc_hd__mux2_1 _359_ (
-    .A0(_144_),
+  sky130_fd_sc_hd__mux2_1 _329_ (
+    .A0(_141_),
     .A1(\fifomem.mem[6] [6]),
-    .S(_155_),
+    .S(_151_),
     .X(_102_)
   );
-  sky130_fd_sc_hd__mux2_1 _360_ (
-    .A0(_139_),
+  sky130_fd_sc_hd__mux2_1 _330_ (
+    .A0(_142_),
     .A1(\fifomem.mem[6] [7]),
-    .S(_155_),
+    .S(_151_),
     .X(_103_)
   );
-  sky130_fd_sc_hd__nand3_1 _361_ (
+  sky130_fd_sc_hd__and3b_1 _331_ (
+    .A_N(\fifomem.waddr [1]),
+    .B(_128_),
+    .C(\fifomem.waddr [0]),
+    .X(_152_)
+  );
+  sky130_fd_sc_hd__nand2_1 _332_ (
+    .A(_133_),
+    .B(_152_),
+    .Y(_153_)
+  );
+  sky130_fd_sc_hd__mux2_1 _333_ (
+    .A0(_135_),
+    .A1(\fifomem.mem[5] [0]),
+    .S(_153_),
+    .X(_088_)
+  );
+  sky130_fd_sc_hd__mux2_1 _334_ (
+    .A0(_136_),
+    .A1(\fifomem.mem[5] [1]),
+    .S(_153_),
+    .X(_089_)
+  );
+  sky130_fd_sc_hd__mux2_1 _335_ (
+    .A0(_137_),
+    .A1(\fifomem.mem[5] [2]),
+    .S(_153_),
+    .X(_090_)
+  );
+  sky130_fd_sc_hd__mux2_1 _336_ (
+    .A0(_138_),
+    .A1(\fifomem.mem[5] [3]),
+    .S(_153_),
+    .X(_091_)
+  );
+  sky130_fd_sc_hd__mux2_1 _337_ (
+    .A0(_139_),
+    .A1(\fifomem.mem[5] [4]),
+    .S(_153_),
+    .X(_092_)
+  );
+  sky130_fd_sc_hd__mux2_1 _338_ (
+    .A0(_140_),
+    .A1(\fifomem.mem[5] [5]),
+    .S(_153_),
+    .X(_093_)
+  );
+  sky130_fd_sc_hd__mux2_1 _339_ (
+    .A0(_141_),
+    .A1(\fifomem.mem[5] [6]),
+    .S(_153_),
+    .X(_094_)
+  );
+  sky130_fd_sc_hd__mux2_1 _340_ (
+    .A0(_142_),
+    .A1(\fifomem.mem[5] [7]),
+    .S(_153_),
+    .X(_095_)
+  );
+  sky130_fd_sc_hd__nand3_1 _341_ (
     .A(\fifomem.waddr [2]),
     .B(\fifomem.waddr [3]),
     .C(_128_),
-    .Y(_156_)
+    .Y(_154_)
   );
-  sky130_fd_sc_hd__nor3_1 _362_ (
+  sky130_fd_sc_hd__nor3_1 _342_ (
     .A(\fifomem.waddr [1]),
-    .B(_130_),
-    .C(_156_),
-    .Y(_157_)
+    .B(_129_),
+    .C(_154_),
+    .Y(_155_)
   );
-  sky130_fd_sc_hd__mux2_1 _363_ (
+  sky130_fd_sc_hd__mux2_1 _343_ (
     .A0(\fifomem.mem[13] [0]),
     .A1(_135_),
-    .S(_157_),
+    .S(_155_),
     .X(_032_)
   );
-  sky130_fd_sc_hd__mux2_1 _364_ (
+  sky130_fd_sc_hd__mux2_1 _344_ (
     .A0(\fifomem.mem[13] [1]),
-    .A1(_142_),
-    .S(_157_),
+    .A1(_136_),
+    .S(_155_),
     .X(_033_)
   );
-  sky130_fd_sc_hd__mux2_1 _365_ (
+  sky130_fd_sc_hd__mux2_1 _345_ (
     .A0(\fifomem.mem[13] [2]),
-    .A1(_143_),
-    .S(_157_),
+    .A1(_137_),
+    .S(_155_),
     .X(_034_)
   );
-  sky130_fd_sc_hd__mux2_1 _366_ (
+  sky130_fd_sc_hd__mux2_1 _346_ (
     .A0(\fifomem.mem[13] [3]),
-    .A1(_136_),
-    .S(_157_),
+    .A1(_138_),
+    .S(_155_),
     .X(_035_)
   );
-  sky130_fd_sc_hd__mux2_1 _367_ (
+  sky130_fd_sc_hd__mux2_1 _347_ (
     .A0(\fifomem.mem[13] [4]),
-    .A1(_137_),
-    .S(_157_),
+    .A1(_139_),
+    .S(_155_),
     .X(_036_)
   );
-  sky130_fd_sc_hd__mux2_1 _368_ (
+  sky130_fd_sc_hd__mux2_1 _348_ (
     .A0(\fifomem.mem[13] [5]),
-    .A1(_138_),
-    .S(_157_),
+    .A1(_140_),
+    .S(_155_),
     .X(_037_)
   );
-  sky130_fd_sc_hd__mux2_1 _369_ (
+  sky130_fd_sc_hd__mux2_1 _349_ (
     .A0(\fifomem.mem[13] [6]),
-    .A1(_144_),
-    .S(_157_),
+    .A1(_141_),
+    .S(_155_),
     .X(_038_)
   );
-  sky130_fd_sc_hd__mux2_1 _370_ (
+  sky130_fd_sc_hd__mux2_1 _350_ (
     .A0(\fifomem.mem[13] [7]),
-    .A1(_139_),
-    .S(_157_),
+    .A1(_142_),
+    .S(_155_),
     .X(_039_)
   );
-  sky130_fd_sc_hd__nand2_1 _371_ (
-    .A(_140_),
-    .B(_153_),
-    .Y(_158_)
+  sky130_fd_sc_hd__nor2b_1 _351_ (
+    .A(_143_),
+    .B_N(_148_),
+    .Y(_156_)
   );
-  sky130_fd_sc_hd__mux2_1 _372_ (
+  sky130_fd_sc_hd__mux2_1 _352_ (
+    .A0(\fifomem.mem[11] [0]),
+    .A1(_135_),
+    .S(_156_),
+    .X(_016_)
+  );
+  sky130_fd_sc_hd__mux2_1 _353_ (
+    .A0(\fifomem.mem[11] [1]),
+    .A1(_136_),
+    .S(_156_),
+    .X(_017_)
+  );
+  sky130_fd_sc_hd__mux2_1 _354_ (
+    .A0(\fifomem.mem[11] [2]),
+    .A1(_137_),
+    .S(_156_),
+    .X(_018_)
+  );
+  sky130_fd_sc_hd__mux2_1 _355_ (
+    .A0(\fifomem.mem[11] [3]),
+    .A1(_138_),
+    .S(_156_),
+    .X(_019_)
+  );
+  sky130_fd_sc_hd__mux2_1 _356_ (
+    .A0(\fifomem.mem[11] [4]),
+    .A1(_139_),
+    .S(_156_),
+    .X(_020_)
+  );
+  sky130_fd_sc_hd__mux2_1 _357_ (
+    .A0(\fifomem.mem[11] [5]),
+    .A1(_140_),
+    .S(_156_),
+    .X(_021_)
+  );
+  sky130_fd_sc_hd__mux2_1 _358_ (
+    .A0(\fifomem.mem[11] [6]),
+    .A1(_141_),
+    .S(_156_),
+    .X(_022_)
+  );
+  sky130_fd_sc_hd__mux2_1 _359_ (
+    .A0(\fifomem.mem[11] [7]),
+    .A1(_142_),
+    .S(_156_),
+    .X(_023_)
+  );
+  sky130_fd_sc_hd__nand2_1 _360_ (
+    .A(_146_),
+    .B(_148_),
+    .Y(_157_)
+  );
+  sky130_fd_sc_hd__mux2_1 _361_ (
     .A0(_135_),
     .A1(\fifomem.mem[10] [0]),
-    .S(_158_),
+    .S(_157_),
     .X(_008_)
   );
-  sky130_fd_sc_hd__mux2_1 _373_ (
-    .A0(_142_),
+  sky130_fd_sc_hd__mux2_1 _362_ (
+    .A0(_136_),
     .A1(\fifomem.mem[10] [1]),
-    .S(_158_),
+    .S(_157_),
     .X(_009_)
   );
-  sky130_fd_sc_hd__mux2_1 _374_ (
-    .A0(_143_),
+  sky130_fd_sc_hd__mux2_1 _363_ (
+    .A0(_137_),
     .A1(\fifomem.mem[10] [2]),
-    .S(_158_),
+    .S(_157_),
     .X(_010_)
   );
-  sky130_fd_sc_hd__mux2_1 _375_ (
-    .A0(_136_),
+  sky130_fd_sc_hd__mux2_1 _364_ (
+    .A0(_138_),
     .A1(\fifomem.mem[10] [3]),
-    .S(_158_),
+    .S(_157_),
     .X(_011_)
   );
-  sky130_fd_sc_hd__mux2_1 _376_ (
-    .A0(_137_),
+  sky130_fd_sc_hd__mux2_1 _365_ (
+    .A0(_139_),
     .A1(\fifomem.mem[10] [4]),
-    .S(_158_),
+    .S(_157_),
     .X(_012_)
   );
-  sky130_fd_sc_hd__mux2_1 _377_ (
-    .A0(_138_),
+  sky130_fd_sc_hd__mux2_1 _366_ (
+    .A0(_140_),
     .A1(\fifomem.mem[10] [5]),
-    .S(_158_),
+    .S(_157_),
     .X(_013_)
   );
-  sky130_fd_sc_hd__mux2_1 _378_ (
-    .A0(_144_),
+  sky130_fd_sc_hd__mux2_1 _367_ (
+    .A0(_141_),
     .A1(\fifomem.mem[10] [6]),
-    .S(_158_),
+    .S(_157_),
     .X(_014_)
   );
-  sky130_fd_sc_hd__mux2_1 _379_ (
-    .A0(_139_),
+  sky130_fd_sc_hd__mux2_1 _368_ (
+    .A0(_142_),
     .A1(\fifomem.mem[10] [7]),
-    .S(_158_),
+    .S(_157_),
     .X(_015_)
   );
-  sky130_fd_sc_hd__nand4_1 _380_ (
+  sky130_fd_sc_hd__nand4_1 _369_ (
     .A(\fifomem.waddr [2]),
     .B(\fifomem.waddr [3]),
     .C(_128_),
-    .D(_132_),
-    .Y(_159_)
+    .D(_131_),
+    .Y(_158_)
   );
-  sky130_fd_sc_hd__mux2_1 _381_ (
+  sky130_fd_sc_hd__mux2_1 _370_ (
     .A0(_135_),
     .A1(\fifomem.mem[12] [0]),
-    .S(_159_),
+    .S(_158_),
     .X(_024_)
   );
-  sky130_fd_sc_hd__mux2_1 _382_ (
-    .A0(_142_),
+  sky130_fd_sc_hd__mux2_1 _371_ (
+    .A0(_136_),
     .A1(\fifomem.mem[12] [1]),
-    .S(_159_),
+    .S(_158_),
     .X(_025_)
   );
-  sky130_fd_sc_hd__mux2_1 _383_ (
-    .A0(_143_),
+  sky130_fd_sc_hd__mux2_1 _372_ (
+    .A0(_137_),
     .A1(\fifomem.mem[12] [2]),
-    .S(_159_),
+    .S(_158_),
     .X(_026_)
   );
-  sky130_fd_sc_hd__mux2_1 _384_ (
-    .A0(_136_),
+  sky130_fd_sc_hd__mux2_1 _373_ (
+    .A0(_138_),
     .A1(\fifomem.mem[12] [3]),
-    .S(_159_),
+    .S(_158_),
     .X(_027_)
   );
-  sky130_fd_sc_hd__mux2_1 _385_ (
-    .A0(_137_),
+  sky130_fd_sc_hd__mux2_1 _374_ (
+    .A0(_139_),
     .A1(\fifomem.mem[12] [4]),
-    .S(_159_),
+    .S(_158_),
     .X(_028_)
   );
-  sky130_fd_sc_hd__mux2_1 _386_ (
-    .A0(_138_),
+  sky130_fd_sc_hd__mux2_1 _375_ (
+    .A0(_140_),
     .A1(\fifomem.mem[12] [5]),
-    .S(_159_),
+    .S(_158_),
     .X(_029_)
   );
-  sky130_fd_sc_hd__mux2_1 _387_ (
-    .A0(_144_),
+  sky130_fd_sc_hd__mux2_1 _376_ (
+    .A0(_141_),
     .A1(\fifomem.mem[12] [6]),
-    .S(_159_),
+    .S(_158_),
     .X(_030_)
   );
-  sky130_fd_sc_hd__mux2_1 _388_ (
-    .A0(_139_),
+  sky130_fd_sc_hd__mux2_1 _377_ (
+    .A0(_142_),
     .A1(\fifomem.mem[12] [7]),
-    .S(_159_),
+    .S(_158_),
     .X(_031_)
   );
-  sky130_fd_sc_hd__nand2_1 _389_ (
-    .A(_145_),
-    .B(_153_),
-    .Y(_160_)
+  sky130_fd_sc_hd__nand2_1 _378_ (
+    .A(_148_),
+    .B(_152_),
+    .Y(_159_)
   );
-  sky130_fd_sc_hd__mux2_1 _390_ (
+  sky130_fd_sc_hd__mux2_1 _379_ (
     .A0(_135_),
     .A1(\fifomem.mem[9] [0]),
-    .S(_160_),
+    .S(_159_),
     .X(_120_)
   );
-  sky130_fd_sc_hd__mux2_1 _391_ (
-    .A0(_142_),
+  sky130_fd_sc_hd__mux2_1 _380_ (
+    .A0(_136_),
     .A1(\fifomem.mem[9] [1]),
-    .S(_160_),
+    .S(_159_),
     .X(_121_)
   );
-  sky130_fd_sc_hd__mux2_1 _392_ (
-    .A0(_143_),
+  sky130_fd_sc_hd__mux2_1 _381_ (
+    .A0(_137_),
     .A1(\fifomem.mem[9] [2]),
-    .S(_160_),
+    .S(_159_),
     .X(_122_)
   );
-  sky130_fd_sc_hd__mux2_1 _393_ (
-    .A0(_136_),
+  sky130_fd_sc_hd__mux2_1 _382_ (
+    .A0(_138_),
     .A1(\fifomem.mem[9] [3]),
-    .S(_160_),
+    .S(_159_),
     .X(_123_)
   );
-  sky130_fd_sc_hd__mux2_1 _394_ (
-    .A0(_137_),
+  sky130_fd_sc_hd__mux2_1 _383_ (
+    .A0(_139_),
     .A1(\fifomem.mem[9] [4]),
-    .S(_160_),
+    .S(_159_),
     .X(_124_)
   );
-  sky130_fd_sc_hd__mux2_1 _395_ (
-    .A0(_138_),
+  sky130_fd_sc_hd__mux2_1 _384_ (
+    .A0(_140_),
     .A1(\fifomem.mem[9] [5]),
-    .S(_160_),
+    .S(_159_),
     .X(_125_)
   );
-  sky130_fd_sc_hd__mux2_1 _396_ (
-    .A0(_144_),
+  sky130_fd_sc_hd__mux2_1 _385_ (
+    .A0(_141_),
     .A1(\fifomem.mem[9] [6]),
-    .S(_160_),
+    .S(_159_),
     .X(_126_)
   );
-  sky130_fd_sc_hd__mux2_1 _397_ (
-    .A0(_139_),
+  sky130_fd_sc_hd__mux2_1 _386_ (
+    .A0(_142_),
     .A1(\fifomem.mem[9] [7]),
-    .S(_160_),
+    .S(_159_),
     .X(_127_)
   );
-  sky130_fd_sc_hd__nor2b_1 _398_ (
-    .A(_147_),
-    .B_N(_153_),
-    .Y(_161_)
+  sky130_fd_sc_hd__nor2_1 _387_ (
+    .A(_143_),
+    .B(_154_),
+    .Y(_160_)
   );
-  sky130_fd_sc_hd__mux2_1 _399_ (
-    .A0(\fifomem.mem[11] [0]),
-    .A1(_135_),
-    .S(_161_),
-    .X(_016_)
-  );
-  sky130_fd_sc_hd__mux2_1 _400_ (
-    .A0(\fifomem.mem[11] [1]),
-    .A1(_142_),
-    .S(_161_),
-    .X(_017_)
-  );
-  sky130_fd_sc_hd__mux2_1 _401_ (
-    .A0(\fifomem.mem[11] [2]),
-    .A1(_143_),
-    .S(_161_),
-    .X(_018_)
-  );
-  sky130_fd_sc_hd__mux2_1 _402_ (
-    .A0(\fifomem.mem[11] [3]),
-    .A1(_136_),
-    .S(_161_),
-    .X(_019_)
-  );
-  sky130_fd_sc_hd__mux2_1 _403_ (
-    .A0(\fifomem.mem[11] [4]),
-    .A1(_137_),
-    .S(_161_),
-    .X(_020_)
-  );
-  sky130_fd_sc_hd__mux2_1 _404_ (
-    .A0(\fifomem.mem[11] [5]),
-    .A1(_138_),
-    .S(_161_),
-    .X(_021_)
-  );
-  sky130_fd_sc_hd__mux2_1 _405_ (
-    .A0(\fifomem.mem[11] [6]),
-    .A1(_144_),
-    .S(_161_),
-    .X(_022_)
-  );
-  sky130_fd_sc_hd__mux2_1 _406_ (
-    .A0(\fifomem.mem[11] [7]),
-    .A1(_139_),
-    .S(_161_),
-    .X(_023_)
-  );
-  sky130_fd_sc_hd__nor3_1 _407_ (
-    .A(\fifomem.waddr [0]),
-    .B(_131_),
-    .C(_156_),
-    .Y(_162_)
-  );
-  sky130_fd_sc_hd__mux2_1 _408_ (
-    .A0(\fifomem.mem[14] [0]),
-    .A1(_135_),
-    .S(_162_),
-    .X(_040_)
-  );
-  sky130_fd_sc_hd__mux2_1 _409_ (
-    .A0(\fifomem.mem[14] [1]),
-    .A1(_142_),
-    .S(_162_),
-    .X(_041_)
-  );
-  sky130_fd_sc_hd__mux2_1 _410_ (
-    .A0(\fifomem.mem[14] [2]),
-    .A1(_143_),
-    .S(_162_),
-    .X(_042_)
-  );
-  sky130_fd_sc_hd__mux2_1 _411_ (
-    .A0(\fifomem.mem[14] [3]),
-    .A1(_136_),
-    .S(_162_),
-    .X(_043_)
-  );
-  sky130_fd_sc_hd__mux2_1 _412_ (
-    .A0(\fifomem.mem[14] [4]),
-    .A1(_137_),
-    .S(_162_),
-    .X(_044_)
-  );
-  sky130_fd_sc_hd__mux2_1 _413_ (
-    .A0(\fifomem.mem[14] [5]),
-    .A1(_138_),
-    .S(_162_),
-    .X(_045_)
-  );
-  sky130_fd_sc_hd__mux2_1 _414_ (
-    .A0(\fifomem.mem[14] [6]),
-    .A1(_144_),
-    .S(_162_),
-    .X(_046_)
-  );
-  sky130_fd_sc_hd__mux2_1 _415_ (
-    .A0(\fifomem.mem[14] [7]),
-    .A1(_139_),
-    .S(_162_),
-    .X(_047_)
-  );
-  sky130_fd_sc_hd__nor2_1 _416_ (
-    .A(_147_),
-    .B(_156_),
-    .Y(_163_)
-  );
-  sky130_fd_sc_hd__mux2_1 _417_ (
+  sky130_fd_sc_hd__mux2_1 _388_ (
     .A0(\fifomem.mem[15] [0]),
     .A1(_135_),
-    .S(_163_),
+    .S(_160_),
     .X(_048_)
   );
-  sky130_fd_sc_hd__mux2_1 _418_ (
+  sky130_fd_sc_hd__mux2_1 _389_ (
     .A0(\fifomem.mem[15] [1]),
-    .A1(_142_),
-    .S(_163_),
+    .A1(_136_),
+    .S(_160_),
     .X(_049_)
   );
-  sky130_fd_sc_hd__mux2_1 _419_ (
+  sky130_fd_sc_hd__mux2_1 _390_ (
     .A0(\fifomem.mem[15] [2]),
-    .A1(_143_),
-    .S(_163_),
+    .A1(_137_),
+    .S(_160_),
     .X(_050_)
   );
-  sky130_fd_sc_hd__mux2_1 _420_ (
+  sky130_fd_sc_hd__mux2_1 _391_ (
     .A0(\fifomem.mem[15] [3]),
-    .A1(_136_),
-    .S(_163_),
+    .A1(_138_),
+    .S(_160_),
     .X(_051_)
   );
-  sky130_fd_sc_hd__mux2_1 _421_ (
+  sky130_fd_sc_hd__mux2_1 _392_ (
     .A0(\fifomem.mem[15] [4]),
-    .A1(_137_),
-    .S(_163_),
+    .A1(_139_),
+    .S(_160_),
     .X(_052_)
   );
-  sky130_fd_sc_hd__mux2_1 _422_ (
+  sky130_fd_sc_hd__mux2_1 _393_ (
     .A0(\fifomem.mem[15] [5]),
-    .A1(_138_),
-    .S(_163_),
+    .A1(_140_),
+    .S(_160_),
     .X(_053_)
   );
-  sky130_fd_sc_hd__mux2_1 _423_ (
+  sky130_fd_sc_hd__mux2_1 _394_ (
     .A0(\fifomem.mem[15] [6]),
-    .A1(_144_),
-    .S(_163_),
+    .A1(_141_),
+    .S(_160_),
     .X(_054_)
   );
-  sky130_fd_sc_hd__mux2_1 _424_ (
+  sky130_fd_sc_hd__mux2_1 _395_ (
     .A0(\fifomem.mem[15] [7]),
-    .A1(_139_),
-    .S(_163_),
+    .A1(_142_),
+    .S(_160_),
     .X(_055_)
   );
-  sky130_fd_sc_hd__mux4_2 _425_ (
-    .A0(\fifomem.mem[2] [0]),
-    .A1(\fifomem.mem[3] [0]),
-    .A2(\fifomem.mem[6] [0]),
-    .A3(\fifomem.mem[7] [0]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_164_)
+  sky130_fd_sc_hd__nor3_1 _396_ (
+    .A(\fifomem.waddr [0]),
+    .B(_130_),
+    .C(_154_),
+    .Y(_161_)
   );
-  sky130_fd_sc_hd__mux4_2 _426_ (
+  sky130_fd_sc_hd__mux2_1 _397_ (
+    .A0(\fifomem.mem[14] [0]),
+    .A1(_135_),
+    .S(_161_),
+    .X(_040_)
+  );
+  sky130_fd_sc_hd__mux2_1 _398_ (
+    .A0(\fifomem.mem[14] [1]),
+    .A1(_136_),
+    .S(_161_),
+    .X(_041_)
+  );
+  sky130_fd_sc_hd__mux2_1 _399_ (
+    .A0(\fifomem.mem[14] [2]),
+    .A1(_137_),
+    .S(_161_),
+    .X(_042_)
+  );
+  sky130_fd_sc_hd__mux2_1 _400_ (
+    .A0(\fifomem.mem[14] [3]),
+    .A1(_138_),
+    .S(_161_),
+    .X(_043_)
+  );
+  sky130_fd_sc_hd__mux2_1 _401_ (
+    .A0(\fifomem.mem[14] [4]),
+    .A1(_139_),
+    .S(_161_),
+    .X(_044_)
+  );
+  sky130_fd_sc_hd__mux2_1 _402_ (
+    .A0(\fifomem.mem[14] [5]),
+    .A1(_140_),
+    .S(_161_),
+    .X(_045_)
+  );
+  sky130_fd_sc_hd__mux2_1 _403_ (
+    .A0(\fifomem.mem[14] [6]),
+    .A1(_141_),
+    .S(_161_),
+    .X(_046_)
+  );
+  sky130_fd_sc_hd__mux2_1 _404_ (
+    .A0(\fifomem.mem[14] [7]),
+    .A1(_142_),
+    .S(_161_),
+    .X(_047_)
+  );
+  sky130_fd_sc_hd__nand3_1 _405_ (
+    .A(_128_),
+    .B(_131_),
+    .C(_144_),
+    .Y(_162_)
+  );
+  sky130_fd_sc_hd__mux2_1 _406_ (
+    .A0(wdata[0]),
+    .A1(\fifomem.mem[0] [0]),
+    .S(_162_),
+    .X(_000_)
+  );
+  sky130_fd_sc_hd__a32o_1 _407_ (
+    .A1(_131_),
+    .A2(_136_),
+    .A3(_144_),
+    .B1(_162_),
+    .B2(\fifomem.mem[0] [1]),
+    .X(_001_)
+  );
+  sky130_fd_sc_hd__a32o_1 _408_ (
+    .A1(_131_),
+    .A2(_137_),
+    .A3(_144_),
+    .B1(_162_),
+    .B2(\fifomem.mem[0] [2]),
+    .X(_002_)
+  );
+  sky130_fd_sc_hd__mux2_1 _409_ (
+    .A0(wdata[3]),
+    .A1(\fifomem.mem[0] [3]),
+    .S(_162_),
+    .X(_003_)
+  );
+  sky130_fd_sc_hd__a32o_1 _410_ (
+    .A1(_131_),
+    .A2(_139_),
+    .A3(_144_),
+    .B1(_162_),
+    .B2(\fifomem.mem[0] [4]),
+    .X(_004_)
+  );
+  sky130_fd_sc_hd__mux2_1 _411_ (
+    .A0(wdata[5]),
+    .A1(\fifomem.mem[0] [5]),
+    .S(_162_),
+    .X(_005_)
+  );
+  sky130_fd_sc_hd__mux2_1 _412_ (
+    .A0(wdata[6]),
+    .A1(\fifomem.mem[0] [6]),
+    .S(_162_),
+    .X(_006_)
+  );
+  sky130_fd_sc_hd__mux2_1 _413_ (
+    .A0(wdata[7]),
+    .A1(\fifomem.mem[0] [7]),
+    .S(_162_),
+    .X(_007_)
+  );
+  sky130_fd_sc_hd__mux4_2 _414_ (
+    .A0(\fifomem.mem[2] [0]),
+    .A1(\fifomem.mem[6] [0]),
+    .A2(\fifomem.mem[3] [0]),
+    .A3(\fifomem.mem[7] [0]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_163_)
+  );
+  sky130_fd_sc_hd__mux4_2 _415_ (
     .A0(\fifomem.mem[0] [0]),
     .A1(\fifomem.mem[1] [0]),
     .A2(\fifomem.mem[4] [0]),
     .A3(\fifomem.mem[5] [0]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
+    .X(_164_)
+  );
+  sky130_fd_sc_hd__mux4_2 _416_ (
+    .A0(\fifomem.mem[10] [0]),
+    .A1(\fifomem.mem[14] [0]),
+    .A2(\fifomem.mem[11] [0]),
+    .A3(\fifomem.mem[15] [0]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_165_)
   );
-  sky130_fd_sc_hd__mux4_2 _427_ (
-    .A0(\fifomem.mem[10] [0]),
-    .A1(\fifomem.mem[11] [0]),
-    .A2(\fifomem.mem[14] [0]),
-    .A3(\fifomem.mem[15] [0]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+  sky130_fd_sc_hd__mux4_2 _417_ (
+    .A0(\fifomem.mem[8] [0]),
+    .A1(\fifomem.mem[12] [0]),
+    .A2(\fifomem.mem[9] [0]),
+    .A3(\fifomem.mem[13] [0]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_166_)
   );
-  sky130_fd_sc_hd__mux4_2 _428_ (
-    .A0(\fifomem.mem[8] [0]),
-    .A1(\fifomem.mem[9] [0]),
-    .A2(\fifomem.mem[12] [0]),
-    .A3(\fifomem.mem[13] [0]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_167_)
-  );
-  sky130_fd_sc_hd__mux4_2 _429_ (
-    .A0(_165_),
-    .A1(_167_),
-    .A2(_164_),
-    .A3(_166_),
+  sky130_fd_sc_hd__mux4_2 _418_ (
+    .A0(_164_),
+    .A1(_166_),
+    .A2(_163_),
+    .A3(_165_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[0])
   );
-  sky130_fd_sc_hd__mux4_2 _430_ (
+  sky130_fd_sc_hd__mux4_2 _419_ (
     .A0(\fifomem.mem[2] [1]),
-    .A1(\fifomem.mem[3] [1]),
-    .A2(\fifomem.mem[6] [1]),
+    .A1(\fifomem.mem[6] [1]),
+    .A2(\fifomem.mem[3] [1]),
     .A3(\fifomem.mem[7] [1]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_168_)
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_167_)
   );
-  sky130_fd_sc_hd__mux4_2 _431_ (
+  sky130_fd_sc_hd__mux4_2 _420_ (
     .A0(\fifomem.mem[0] [1]),
     .A1(\fifomem.mem[1] [1]),
     .A2(\fifomem.mem[4] [1]),
     .A3(\fifomem.mem[5] [1]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
+    .X(_168_)
+  );
+  sky130_fd_sc_hd__mux4_2 _421_ (
+    .A0(\fifomem.mem[10] [1]),
+    .A1(\fifomem.mem[14] [1]),
+    .A2(\fifomem.mem[11] [1]),
+    .A3(\fifomem.mem[15] [1]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_169_)
   );
-  sky130_fd_sc_hd__mux4_2 _432_ (
-    .A0(\fifomem.mem[10] [1]),
-    .A1(\fifomem.mem[11] [1]),
-    .A2(\fifomem.mem[14] [1]),
-    .A3(\fifomem.mem[15] [1]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+  sky130_fd_sc_hd__mux4_2 _422_ (
+    .A0(\fifomem.mem[8] [1]),
+    .A1(\fifomem.mem[12] [1]),
+    .A2(\fifomem.mem[9] [1]),
+    .A3(\fifomem.mem[13] [1]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_170_)
   );
-  sky130_fd_sc_hd__mux4_2 _433_ (
-    .A0(\fifomem.mem[8] [1]),
-    .A1(\fifomem.mem[9] [1]),
-    .A2(\fifomem.mem[12] [1]),
-    .A3(\fifomem.mem[13] [1]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_171_)
-  );
-  sky130_fd_sc_hd__mux4_2 _434_ (
-    .A0(_169_),
-    .A1(_171_),
-    .A2(_168_),
-    .A3(_170_),
+  sky130_fd_sc_hd__mux4_2 _423_ (
+    .A0(_168_),
+    .A1(_170_),
+    .A2(_167_),
+    .A3(_169_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[1])
   );
-  sky130_fd_sc_hd__mux4_2 _435_ (
+  sky130_fd_sc_hd__mux4_2 _424_ (
     .A0(\fifomem.mem[2] [2]),
-    .A1(\fifomem.mem[3] [2]),
-    .A2(\fifomem.mem[6] [2]),
+    .A1(\fifomem.mem[6] [2]),
+    .A2(\fifomem.mem[3] [2]),
     .A3(\fifomem.mem[7] [2]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_172_)
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_171_)
   );
-  sky130_fd_sc_hd__mux4_2 _436_ (
+  sky130_fd_sc_hd__mux4_2 _425_ (
     .A0(\fifomem.mem[0] [2]),
     .A1(\fifomem.mem[1] [2]),
     .A2(\fifomem.mem[4] [2]),
     .A3(\fifomem.mem[5] [2]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
+    .X(_172_)
+  );
+  sky130_fd_sc_hd__mux4_2 _426_ (
+    .A0(\fifomem.mem[10] [2]),
+    .A1(\fifomem.mem[14] [2]),
+    .A2(\fifomem.mem[11] [2]),
+    .A3(\fifomem.mem[15] [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_173_)
   );
-  sky130_fd_sc_hd__mux4_2 _437_ (
-    .A0(\fifomem.mem[10] [2]),
-    .A1(\fifomem.mem[11] [2]),
-    .A2(\fifomem.mem[14] [2]),
-    .A3(\fifomem.mem[15] [2]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+  sky130_fd_sc_hd__mux4_2 _427_ (
+    .A0(\fifomem.mem[8] [2]),
+    .A1(\fifomem.mem[12] [2]),
+    .A2(\fifomem.mem[9] [2]),
+    .A3(\fifomem.mem[13] [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_174_)
   );
-  sky130_fd_sc_hd__mux4_2 _438_ (
-    .A0(\fifomem.mem[8] [2]),
-    .A1(\fifomem.mem[9] [2]),
-    .A2(\fifomem.mem[12] [2]),
-    .A3(\fifomem.mem[13] [2]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_175_)
-  );
-  sky130_fd_sc_hd__mux4_2 _439_ (
-    .A0(_173_),
-    .A1(_175_),
-    .A2(_172_),
-    .A3(_174_),
+  sky130_fd_sc_hd__mux4_2 _428_ (
+    .A0(_172_),
+    .A1(_174_),
+    .A2(_171_),
+    .A3(_173_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[2])
   );
-  sky130_fd_sc_hd__mux4_2 _440_ (
+  sky130_fd_sc_hd__mux4_2 _429_ (
+    .A0(\fifomem.mem[10] [3]),
+    .A1(\fifomem.mem[14] [3]),
+    .A2(\fifomem.mem[11] [3]),
+    .A3(\fifomem.mem[15] [3]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_175_)
+  );
+  sky130_fd_sc_hd__mux4_2 _430_ (
     .A0(\fifomem.mem[2] [3]),
-    .A1(\fifomem.mem[3] [3]),
-    .A2(\fifomem.mem[6] [3]),
+    .A1(\fifomem.mem[6] [3]),
+    .A2(\fifomem.mem[3] [3]),
     .A3(\fifomem.mem[7] [3]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_176_)
   );
-  sky130_fd_sc_hd__mux4_2 _441_ (
+  sky130_fd_sc_hd__mux4_2 _431_ (
+    .A0(\fifomem.mem[8] [3]),
+    .A1(\fifomem.mem[12] [3]),
+    .A2(\fifomem.mem[9] [3]),
+    .A3(\fifomem.mem[13] [3]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_177_)
+  );
+  sky130_fd_sc_hd__mux4_2 _432_ (
     .A0(\fifomem.mem[0] [3]),
     .A1(\fifomem.mem[1] [3]),
     .A2(\fifomem.mem[4] [3]),
     .A3(\fifomem.mem[5] [3]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
-    .X(_177_)
-  );
-  sky130_fd_sc_hd__mux4_2 _442_ (
-    .A0(\fifomem.mem[10] [3]),
-    .A1(\fifomem.mem[11] [3]),
-    .A2(\fifomem.mem[14] [3]),
-    .A3(\fifomem.mem[15] [3]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
     .X(_178_)
   );
-  sky130_fd_sc_hd__mux4_2 _443_ (
-    .A0(\fifomem.mem[8] [3]),
-    .A1(\fifomem.mem[9] [3]),
-    .A2(\fifomem.mem[12] [3]),
-    .A3(\fifomem.mem[13] [3]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_179_)
-  );
-  sky130_fd_sc_hd__mux4_2 _444_ (
-    .A0(_177_),
-    .A1(_179_),
+  sky130_fd_sc_hd__mux4_2 _433_ (
+    .A0(_178_),
+    .A1(_177_),
     .A2(_176_),
-    .A3(_178_),
+    .A3(_175_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[3])
   );
-  sky130_fd_sc_hd__mux4_2 _445_ (
+  sky130_fd_sc_hd__mux4_2 _434_ (
+    .A0(\fifomem.mem[10] [4]),
+    .A1(\fifomem.mem[14] [4]),
+    .A2(\fifomem.mem[11] [4]),
+    .A3(\fifomem.mem[15] [4]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_179_)
+  );
+  sky130_fd_sc_hd__mux4_2 _435_ (
     .A0(\fifomem.mem[2] [4]),
-    .A1(\fifomem.mem[3] [4]),
-    .A2(\fifomem.mem[6] [4]),
+    .A1(\fifomem.mem[6] [4]),
+    .A2(\fifomem.mem[3] [4]),
     .A3(\fifomem.mem[7] [4]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_180_)
   );
-  sky130_fd_sc_hd__mux4_2 _446_ (
+  sky130_fd_sc_hd__mux4_2 _436_ (
+    .A0(\fifomem.mem[8] [4]),
+    .A1(\fifomem.mem[12] [4]),
+    .A2(\fifomem.mem[9] [4]),
+    .A3(\fifomem.mem[13] [4]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_181_)
+  );
+  sky130_fd_sc_hd__mux4_2 _437_ (
     .A0(\fifomem.mem[0] [4]),
     .A1(\fifomem.mem[1] [4]),
     .A2(\fifomem.mem[4] [4]),
     .A3(\fifomem.mem[5] [4]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
-    .X(_181_)
-  );
-  sky130_fd_sc_hd__mux4_2 _447_ (
-    .A0(\fifomem.mem[10] [4]),
-    .A1(\fifomem.mem[11] [4]),
-    .A2(\fifomem.mem[14] [4]),
-    .A3(\fifomem.mem[15] [4]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
     .X(_182_)
   );
-  sky130_fd_sc_hd__mux4_2 _448_ (
-    .A0(\fifomem.mem[8] [4]),
-    .A1(\fifomem.mem[9] [4]),
-    .A2(\fifomem.mem[12] [4]),
-    .A3(\fifomem.mem[13] [4]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_183_)
-  );
-  sky130_fd_sc_hd__mux4_2 _449_ (
-    .A0(_181_),
-    .A1(_183_),
+  sky130_fd_sc_hd__mux4_2 _438_ (
+    .A0(_182_),
+    .A1(_181_),
     .A2(_180_),
-    .A3(_182_),
+    .A3(_179_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[4])
   );
-  sky130_fd_sc_hd__mux4_2 _450_ (
+  sky130_fd_sc_hd__mux4_2 _439_ (
+    .A0(\fifomem.mem[10] [5]),
+    .A1(\fifomem.mem[14] [5]),
+    .A2(\fifomem.mem[11] [5]),
+    .A3(\fifomem.mem[15] [5]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_183_)
+  );
+  sky130_fd_sc_hd__mux4_2 _440_ (
     .A0(\fifomem.mem[2] [5]),
-    .A1(\fifomem.mem[3] [5]),
-    .A2(\fifomem.mem[6] [5]),
+    .A1(\fifomem.mem[6] [5]),
+    .A2(\fifomem.mem[3] [5]),
     .A3(\fifomem.mem[7] [5]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_184_)
   );
-  sky130_fd_sc_hd__mux4_2 _451_ (
+  sky130_fd_sc_hd__mux4_2 _441_ (
+    .A0(\fifomem.mem[8] [5]),
+    .A1(\fifomem.mem[12] [5]),
+    .A2(\fifomem.mem[9] [5]),
+    .A3(\fifomem.mem[13] [5]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_185_)
+  );
+  sky130_fd_sc_hd__mux4_2 _442_ (
     .A0(\fifomem.mem[0] [5]),
     .A1(\fifomem.mem[1] [5]),
     .A2(\fifomem.mem[4] [5]),
     .A3(\fifomem.mem[5] [5]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
-    .X(_185_)
-  );
-  sky130_fd_sc_hd__mux4_2 _452_ (
-    .A0(\fifomem.mem[10] [5]),
-    .A1(\fifomem.mem[11] [5]),
-    .A2(\fifomem.mem[14] [5]),
-    .A3(\fifomem.mem[15] [5]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
     .X(_186_)
   );
-  sky130_fd_sc_hd__mux4_2 _453_ (
-    .A0(\fifomem.mem[8] [5]),
-    .A1(\fifomem.mem[9] [5]),
-    .A2(\fifomem.mem[12] [5]),
-    .A3(\fifomem.mem[13] [5]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_187_)
-  );
-  sky130_fd_sc_hd__mux4_2 _454_ (
-    .A0(_185_),
-    .A1(_187_),
+  sky130_fd_sc_hd__mux4_2 _443_ (
+    .A0(_186_),
+    .A1(_185_),
     .A2(_184_),
-    .A3(_186_),
+    .A3(_183_),
     .S0(\fifomem.raddr [3]),
     .S1(\fifomem.raddr [1]),
     .X(rdata[5])
   );
-  sky130_fd_sc_hd__mux4_2 _455_ (
-    .A0(\fifomem.mem[2] [6]),
-    .A1(\fifomem.mem[3] [6]),
-    .A2(\fifomem.mem[6] [6]),
-    .A3(\fifomem.mem[7] [6]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+  sky130_fd_sc_hd__mux4_2 _444_ (
+    .A0(\fifomem.mem[10] [6]),
+    .A1(\fifomem.mem[14] [6]),
+    .A2(\fifomem.mem[11] [6]),
+    .A3(\fifomem.mem[15] [6]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_187_)
+  );
+  sky130_fd_sc_hd__mux4_2 _445_ (
+    .A0(\fifomem.mem[8] [6]),
+    .A1(\fifomem.mem[12] [6]),
+    .A2(\fifomem.mem[9] [6]),
+    .A3(\fifomem.mem[13] [6]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_188_)
   );
-  sky130_fd_sc_hd__mux4_2 _456_ (
+  sky130_fd_sc_hd__mux4_2 _446_ (
+    .A0(\fifomem.mem[2] [6]),
+    .A1(\fifomem.mem[6] [6]),
+    .A2(\fifomem.mem[3] [6]),
+    .A3(\fifomem.mem[7] [6]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_189_)
+  );
+  sky130_fd_sc_hd__mux4_2 _447_ (
     .A0(\fifomem.mem[0] [6]),
     .A1(\fifomem.mem[1] [6]),
     .A2(\fifomem.mem[4] [6]),
     .A3(\fifomem.mem[5] [6]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
-    .X(_189_)
-  );
-  sky130_fd_sc_hd__mux4_2 _457_ (
-    .A0(\fifomem.mem[10] [6]),
-    .A1(\fifomem.mem[11] [6]),
-    .A2(\fifomem.mem[14] [6]),
-    .A3(\fifomem.mem[15] [6]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
     .X(_190_)
   );
-  sky130_fd_sc_hd__mux4_2 _458_ (
-    .A0(\fifomem.mem[8] [6]),
-    .A1(\fifomem.mem[9] [6]),
-    .A2(\fifomem.mem[12] [6]),
-    .A3(\fifomem.mem[13] [6]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_191_)
-  );
-  sky130_fd_sc_hd__mux4_2 _459_ (
-    .A0(_189_),
-    .A1(_191_),
+  sky130_fd_sc_hd__mux4_2 _448_ (
+    .A0(_190_),
+    .A1(_189_),
     .A2(_188_),
-    .A3(_190_),
-    .S0(\fifomem.raddr [3]),
-    .S1(\fifomem.raddr [1]),
+    .A3(_187_),
+    .S0(\fifomem.raddr [1]),
+    .S1(\fifomem.raddr [3]),
     .X(rdata[6])
   );
-  sky130_fd_sc_hd__mux4_2 _460_ (
+  sky130_fd_sc_hd__mux4_2 _449_ (
     .A0(\fifomem.mem[10] [7]),
-    .A1(\fifomem.mem[11] [7]),
-    .A2(\fifomem.mem[14] [7]),
+    .A1(\fifomem.mem[14] [7]),
+    .A2(\fifomem.mem[11] [7]),
     .A3(\fifomem.mem[15] [7]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
+    .X(_191_)
+  );
+  sky130_fd_sc_hd__mux4_2 _450_ (
+    .A0(\fifomem.mem[2] [7]),
+    .A1(\fifomem.mem[6] [7]),
+    .A2(\fifomem.mem[3] [7]),
+    .A3(\fifomem.mem[7] [7]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_192_)
   );
-  sky130_fd_sc_hd__mux4_2 _461_ (
+  sky130_fd_sc_hd__mux4_2 _451_ (
     .A0(\fifomem.mem[8] [7]),
-    .A1(\fifomem.mem[9] [7]),
-    .A2(\fifomem.mem[12] [7]),
+    .A1(\fifomem.mem[12] [7]),
+    .A2(\fifomem.mem[9] [7]),
     .A3(\fifomem.mem[13] [7]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
+    .S0(\fifomem.raddr [2]),
+    .S1(\fifomem.raddr [0]),
     .X(_193_)
   );
-  sky130_fd_sc_hd__mux4_2 _462_ (
-    .A0(\fifomem.mem[2] [7]),
-    .A1(\fifomem.mem[3] [7]),
-    .A2(\fifomem.mem[6] [7]),
-    .A3(\fifomem.mem[7] [7]),
-    .S0(\fifomem.raddr [0]),
-    .S1(\fifomem.raddr [2]),
-    .X(_194_)
-  );
-  sky130_fd_sc_hd__mux4_2 _463_ (
+  sky130_fd_sc_hd__mux4_2 _452_ (
     .A0(\fifomem.mem[0] [7]),
     .A1(\fifomem.mem[1] [7]),
     .A2(\fifomem.mem[4] [7]),
     .A3(\fifomem.mem[5] [7]),
     .S0(\fifomem.raddr [0]),
     .S1(\fifomem.raddr [2]),
-    .X(_195_)
+    .X(_194_)
   );
-  sky130_fd_sc_hd__mux4_2 _464_ (
-    .A0(_195_),
-    .A1(_194_),
-    .A2(_193_),
-    .A3(_192_),
-    .S0(\fifomem.raddr [1]),
-    .S1(\fifomem.raddr [3]),
+  sky130_fd_sc_hd__mux4_2 _453_ (
+    .A0(_194_),
+    .A1(_193_),
+    .A2(_192_),
+    .A3(_191_),
+    .S0(\fifomem.raddr [3]),
+    .S1(\fifomem.raddr [1]),
     .X(rdata[7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _465_ (
-    .CLK(wclk),
-    .D(_072_),
-    .Q(\fifomem.mem[3] [0])
+  sky130_fd_sc_hd__nand2_1 _454_ (
+    .A(_144_),
+    .B(_152_),
+    .Y(_195_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _466_ (
-    .CLK(wclk),
-    .D(_073_),
-    .Q(\fifomem.mem[3] [1])
+  sky130_fd_sc_hd__mux2_1 _455_ (
+    .A0(_135_),
+    .A1(\fifomem.mem[1] [0]),
+    .S(_195_),
+    .X(_056_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _467_ (
-    .CLK(wclk),
-    .D(_074_),
-    .Q(\fifomem.mem[3] [2])
+  sky130_fd_sc_hd__mux2_1 _456_ (
+    .A0(_136_),
+    .A1(\fifomem.mem[1] [1]),
+    .S(_195_),
+    .X(_057_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _468_ (
-    .CLK(wclk),
-    .D(_075_),
-    .Q(\fifomem.mem[3] [3])
+  sky130_fd_sc_hd__mux2_1 _457_ (
+    .A0(_137_),
+    .A1(\fifomem.mem[1] [2]),
+    .S(_195_),
+    .X(_058_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _469_ (
-    .CLK(wclk),
-    .D(_076_),
-    .Q(\fifomem.mem[3] [4])
+  sky130_fd_sc_hd__mux2_1 _458_ (
+    .A0(_138_),
+    .A1(\fifomem.mem[1] [3]),
+    .S(_195_),
+    .X(_059_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _470_ (
-    .CLK(wclk),
-    .D(_077_),
-    .Q(\fifomem.mem[3] [5])
+  sky130_fd_sc_hd__mux2_1 _459_ (
+    .A0(_139_),
+    .A1(\fifomem.mem[1] [4]),
+    .S(_195_),
+    .X(_060_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _471_ (
-    .CLK(wclk),
-    .D(_078_),
-    .Q(\fifomem.mem[3] [6])
+  sky130_fd_sc_hd__mux2_1 _460_ (
+    .A0(_140_),
+    .A1(\fifomem.mem[1] [5]),
+    .S(_195_),
+    .X(_061_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _472_ (
-    .CLK(wclk),
-    .D(_079_),
-    .Q(\fifomem.mem[3] [7])
+  sky130_fd_sc_hd__mux2_1 _461_ (
+    .A0(_141_),
+    .A1(\fifomem.mem[1] [6]),
+    .S(_195_),
+    .X(_062_)
   );
-  sky130_fd_sc_hd__dfxtp_1 _473_ (
+  sky130_fd_sc_hd__mux2_1 _462_ (
+    .A0(_142_),
+    .A1(\fifomem.mem[1] [7]),
+    .S(_195_),
+    .X(_063_)
+  );
+  sky130_fd_sc_hd__dfxtp_1 _463_ (
     .CLK(wclk),
     .D(_000_),
     .Q(\fifomem.mem[0] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _474_ (
+  sky130_fd_sc_hd__dfxtp_1 _464_ (
     .CLK(wclk),
     .D(_001_),
     .Q(\fifomem.mem[0] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _475_ (
+  sky130_fd_sc_hd__dfxtp_1 _465_ (
     .CLK(wclk),
     .D(_002_),
     .Q(\fifomem.mem[0] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _476_ (
+  sky130_fd_sc_hd__dfxtp_1 _466_ (
     .CLK(wclk),
     .D(_003_),
     .Q(\fifomem.mem[0] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _477_ (
+  sky130_fd_sc_hd__dfxtp_1 _467_ (
     .CLK(wclk),
     .D(_004_),
     .Q(\fifomem.mem[0] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _478_ (
+  sky130_fd_sc_hd__dfxtp_1 _468_ (
     .CLK(wclk),
     .D(_005_),
     .Q(\fifomem.mem[0] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _479_ (
+  sky130_fd_sc_hd__dfxtp_1 _469_ (
     .CLK(wclk),
     .D(_006_),
     .Q(\fifomem.mem[0] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _480_ (
+  sky130_fd_sc_hd__dfxtp_1 _470_ (
     .CLK(wclk),
     .D(_007_),
     .Q(\fifomem.mem[0] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _481_ (
-    .CLK(wclk),
-    .D(_048_),
-    .Q(\fifomem.mem[15] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _482_ (
-    .CLK(wclk),
-    .D(_049_),
-    .Q(\fifomem.mem[15] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _483_ (
-    .CLK(wclk),
-    .D(_050_),
-    .Q(\fifomem.mem[15] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _484_ (
-    .CLK(wclk),
-    .D(_051_),
-    .Q(\fifomem.mem[15] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _485_ (
-    .CLK(wclk),
-    .D(_052_),
-    .Q(\fifomem.mem[15] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _486_ (
-    .CLK(wclk),
-    .D(_053_),
-    .Q(\fifomem.mem[15] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _487_ (
-    .CLK(wclk),
-    .D(_054_),
-    .Q(\fifomem.mem[15] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _488_ (
-    .CLK(wclk),
-    .D(_055_),
-    .Q(\fifomem.mem[15] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _489_ (
-    .CLK(wclk),
-    .D(_120_),
-    .Q(\fifomem.mem[9] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _490_ (
-    .CLK(wclk),
-    .D(_121_),
-    .Q(\fifomem.mem[9] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _491_ (
-    .CLK(wclk),
-    .D(_122_),
-    .Q(\fifomem.mem[9] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _492_ (
-    .CLK(wclk),
-    .D(_123_),
-    .Q(\fifomem.mem[9] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _493_ (
-    .CLK(wclk),
-    .D(_124_),
-    .Q(\fifomem.mem[9] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _494_ (
-    .CLK(wclk),
-    .D(_125_),
-    .Q(\fifomem.mem[9] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _495_ (
-    .CLK(wclk),
-    .D(_126_),
-    .Q(\fifomem.mem[9] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _496_ (
-    .CLK(wclk),
-    .D(_127_),
-    .Q(\fifomem.mem[9] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _497_ (
-    .CLK(wclk),
-    .D(_008_),
-    .Q(\fifomem.mem[10] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _498_ (
-    .CLK(wclk),
-    .D(_009_),
-    .Q(\fifomem.mem[10] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _499_ (
-    .CLK(wclk),
-    .D(_010_),
-    .Q(\fifomem.mem[10] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _500_ (
-    .CLK(wclk),
-    .D(_011_),
-    .Q(\fifomem.mem[10] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _501_ (
-    .CLK(wclk),
-    .D(_012_),
-    .Q(\fifomem.mem[10] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _502_ (
-    .CLK(wclk),
-    .D(_013_),
-    .Q(\fifomem.mem[10] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _503_ (
-    .CLK(wclk),
-    .D(_014_),
-    .Q(\fifomem.mem[10] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _504_ (
-    .CLK(wclk),
-    .D(_015_),
-    .Q(\fifomem.mem[10] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _505_ (
-    .CLK(wclk),
-    .D(_080_),
-    .Q(\fifomem.mem[4] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _506_ (
-    .CLK(wclk),
-    .D(_081_),
-    .Q(\fifomem.mem[4] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _507_ (
-    .CLK(wclk),
-    .D(_082_),
-    .Q(\fifomem.mem[4] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _508_ (
-    .CLK(wclk),
-    .D(_083_),
-    .Q(\fifomem.mem[4] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _509_ (
-    .CLK(wclk),
-    .D(_084_),
-    .Q(\fifomem.mem[4] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _510_ (
-    .CLK(wclk),
-    .D(_085_),
-    .Q(\fifomem.mem[4] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _511_ (
-    .CLK(wclk),
-    .D(_086_),
-    .Q(\fifomem.mem[4] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _512_ (
-    .CLK(wclk),
-    .D(_087_),
-    .Q(\fifomem.mem[4] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _513_ (
+  sky130_fd_sc_hd__dfxtp_1 _471_ (
     .CLK(wclk),
     .D(_056_),
     .Q(\fifomem.mem[1] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _514_ (
+  sky130_fd_sc_hd__dfxtp_1 _472_ (
     .CLK(wclk),
     .D(_057_),
     .Q(\fifomem.mem[1] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _515_ (
+  sky130_fd_sc_hd__dfxtp_1 _473_ (
     .CLK(wclk),
     .D(_058_),
     .Q(\fifomem.mem[1] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _516_ (
+  sky130_fd_sc_hd__dfxtp_1 _474_ (
     .CLK(wclk),
     .D(_059_),
     .Q(\fifomem.mem[1] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _517_ (
+  sky130_fd_sc_hd__dfxtp_1 _475_ (
     .CLK(wclk),
     .D(_060_),
     .Q(\fifomem.mem[1] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _518_ (
+  sky130_fd_sc_hd__dfxtp_1 _476_ (
     .CLK(wclk),
     .D(_061_),
     .Q(\fifomem.mem[1] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _519_ (
+  sky130_fd_sc_hd__dfxtp_1 _477_ (
     .CLK(wclk),
     .D(_062_),
     .Q(\fifomem.mem[1] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _520_ (
+  sky130_fd_sc_hd__dfxtp_1 _478_ (
     .CLK(wclk),
     .D(_063_),
     .Q(\fifomem.mem[1] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _521_ (
+  sky130_fd_sc_hd__dfxtp_1 _479_ (
+    .CLK(wclk),
+    .D(_048_),
+    .Q(\fifomem.mem[15] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _480_ (
+    .CLK(wclk),
+    .D(_049_),
+    .Q(\fifomem.mem[15] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _481_ (
+    .CLK(wclk),
+    .D(_050_),
+    .Q(\fifomem.mem[15] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _482_ (
+    .CLK(wclk),
+    .D(_051_),
+    .Q(\fifomem.mem[15] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _483_ (
+    .CLK(wclk),
+    .D(_052_),
+    .Q(\fifomem.mem[15] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _484_ (
+    .CLK(wclk),
+    .D(_053_),
+    .Q(\fifomem.mem[15] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _485_ (
+    .CLK(wclk),
+    .D(_054_),
+    .Q(\fifomem.mem[15] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _486_ (
+    .CLK(wclk),
+    .D(_055_),
+    .Q(\fifomem.mem[15] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _487_ (
     .CLK(wclk),
     .D(_040_),
     .Q(\fifomem.mem[14] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _522_ (
+  sky130_fd_sc_hd__dfxtp_1 _488_ (
     .CLK(wclk),
     .D(_041_),
     .Q(\fifomem.mem[14] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _523_ (
+  sky130_fd_sc_hd__dfxtp_1 _489_ (
     .CLK(wclk),
     .D(_042_),
     .Q(\fifomem.mem[14] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _524_ (
+  sky130_fd_sc_hd__dfxtp_1 _490_ (
     .CLK(wclk),
     .D(_043_),
     .Q(\fifomem.mem[14] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _525_ (
+  sky130_fd_sc_hd__dfxtp_1 _491_ (
     .CLK(wclk),
     .D(_044_),
     .Q(\fifomem.mem[14] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _526_ (
+  sky130_fd_sc_hd__dfxtp_1 _492_ (
     .CLK(wclk),
     .D(_045_),
     .Q(\fifomem.mem[14] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _527_ (
+  sky130_fd_sc_hd__dfxtp_1 _493_ (
     .CLK(wclk),
     .D(_046_),
     .Q(\fifomem.mem[14] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _528_ (
+  sky130_fd_sc_hd__dfxtp_1 _494_ (
     .CLK(wclk),
     .D(_047_),
     .Q(\fifomem.mem[14] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _529_ (
-    .CLK(wclk),
-    .D(_032_),
-    .Q(\fifomem.mem[13] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _530_ (
-    .CLK(wclk),
-    .D(_033_),
-    .Q(\fifomem.mem[13] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _531_ (
-    .CLK(wclk),
-    .D(_034_),
-    .Q(\fifomem.mem[13] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _532_ (
-    .CLK(wclk),
-    .D(_035_),
-    .Q(\fifomem.mem[13] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _533_ (
-    .CLK(wclk),
-    .D(_036_),
-    .Q(\fifomem.mem[13] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _534_ (
-    .CLK(wclk),
-    .D(_037_),
-    .Q(\fifomem.mem[13] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _535_ (
-    .CLK(wclk),
-    .D(_038_),
-    .Q(\fifomem.mem[13] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _536_ (
-    .CLK(wclk),
-    .D(_039_),
-    .Q(\fifomem.mem[13] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _537_ (
+  sky130_fd_sc_hd__dfxtp_1 _495_ (
     .CLK(wclk),
     .D(_024_),
     .Q(\fifomem.mem[12] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _538_ (
+  sky130_fd_sc_hd__dfxtp_1 _496_ (
     .CLK(wclk),
     .D(_025_),
     .Q(\fifomem.mem[12] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _539_ (
+  sky130_fd_sc_hd__dfxtp_1 _497_ (
     .CLK(wclk),
     .D(_026_),
     .Q(\fifomem.mem[12] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _540_ (
+  sky130_fd_sc_hd__dfxtp_1 _498_ (
     .CLK(wclk),
     .D(_027_),
     .Q(\fifomem.mem[12] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _541_ (
+  sky130_fd_sc_hd__dfxtp_1 _499_ (
     .CLK(wclk),
     .D(_028_),
     .Q(\fifomem.mem[12] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _542_ (
+  sky130_fd_sc_hd__dfxtp_1 _500_ (
     .CLK(wclk),
     .D(_029_),
     .Q(\fifomem.mem[12] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _543_ (
+  sky130_fd_sc_hd__dfxtp_1 _501_ (
     .CLK(wclk),
     .D(_030_),
     .Q(\fifomem.mem[12] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _544_ (
+  sky130_fd_sc_hd__dfxtp_1 _502_ (
     .CLK(wclk),
     .D(_031_),
     .Q(\fifomem.mem[12] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _545_ (
+  sky130_fd_sc_hd__dfxtp_1 _503_ (
+    .CLK(wclk),
+    .D(_032_),
+    .Q(\fifomem.mem[13] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _504_ (
+    .CLK(wclk),
+    .D(_033_),
+    .Q(\fifomem.mem[13] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _505_ (
+    .CLK(wclk),
+    .D(_034_),
+    .Q(\fifomem.mem[13] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _506_ (
+    .CLK(wclk),
+    .D(_035_),
+    .Q(\fifomem.mem[13] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _507_ (
+    .CLK(wclk),
+    .D(_036_),
+    .Q(\fifomem.mem[13] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _508_ (
+    .CLK(wclk),
+    .D(_037_),
+    .Q(\fifomem.mem[13] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _509_ (
+    .CLK(wclk),
+    .D(_038_),
+    .Q(\fifomem.mem[13] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _510_ (
+    .CLK(wclk),
+    .D(_039_),
+    .Q(\fifomem.mem[13] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _511_ (
     .CLK(wclk),
     .D(_016_),
     .Q(\fifomem.mem[11] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _546_ (
+  sky130_fd_sc_hd__dfxtp_1 _512_ (
     .CLK(wclk),
     .D(_017_),
     .Q(\fifomem.mem[11] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _547_ (
+  sky130_fd_sc_hd__dfxtp_1 _513_ (
     .CLK(wclk),
     .D(_018_),
     .Q(\fifomem.mem[11] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _548_ (
+  sky130_fd_sc_hd__dfxtp_1 _514_ (
     .CLK(wclk),
     .D(_019_),
     .Q(\fifomem.mem[11] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _549_ (
+  sky130_fd_sc_hd__dfxtp_1 _515_ (
     .CLK(wclk),
     .D(_020_),
     .Q(\fifomem.mem[11] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _550_ (
+  sky130_fd_sc_hd__dfxtp_1 _516_ (
     .CLK(wclk),
     .D(_021_),
     .Q(\fifomem.mem[11] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _551_ (
+  sky130_fd_sc_hd__dfxtp_1 _517_ (
     .CLK(wclk),
     .D(_022_),
     .Q(\fifomem.mem[11] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _552_ (
+  sky130_fd_sc_hd__dfxtp_1 _518_ (
     .CLK(wclk),
     .D(_023_),
     .Q(\fifomem.mem[11] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _553_ (
+  sky130_fd_sc_hd__dfxtp_1 _519_ (
     .CLK(wclk),
-    .D(_104_),
-    .Q(\fifomem.mem[7] [0])
+    .D(_008_),
+    .Q(\fifomem.mem[10] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _554_ (
+  sky130_fd_sc_hd__dfxtp_1 _520_ (
     .CLK(wclk),
-    .D(_105_),
-    .Q(\fifomem.mem[7] [1])
+    .D(_009_),
+    .Q(\fifomem.mem[10] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _555_ (
+  sky130_fd_sc_hd__dfxtp_1 _521_ (
     .CLK(wclk),
-    .D(_106_),
-    .Q(\fifomem.mem[7] [2])
+    .D(_010_),
+    .Q(\fifomem.mem[10] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _556_ (
+  sky130_fd_sc_hd__dfxtp_1 _522_ (
     .CLK(wclk),
-    .D(_107_),
-    .Q(\fifomem.mem[7] [3])
+    .D(_011_),
+    .Q(\fifomem.mem[10] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _557_ (
+  sky130_fd_sc_hd__dfxtp_1 _523_ (
     .CLK(wclk),
-    .D(_108_),
-    .Q(\fifomem.mem[7] [4])
+    .D(_012_),
+    .Q(\fifomem.mem[10] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _558_ (
+  sky130_fd_sc_hd__dfxtp_1 _524_ (
     .CLK(wclk),
-    .D(_109_),
-    .Q(\fifomem.mem[7] [5])
+    .D(_013_),
+    .Q(\fifomem.mem[10] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _559_ (
+  sky130_fd_sc_hd__dfxtp_1 _525_ (
     .CLK(wclk),
-    .D(_110_),
-    .Q(\fifomem.mem[7] [6])
+    .D(_014_),
+    .Q(\fifomem.mem[10] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _560_ (
+  sky130_fd_sc_hd__dfxtp_1 _526_ (
     .CLK(wclk),
-    .D(_111_),
-    .Q(\fifomem.mem[7] [7])
+    .D(_015_),
+    .Q(\fifomem.mem[10] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _561_ (
+  sky130_fd_sc_hd__dfxtp_1 _527_ (
     .CLK(wclk),
-    .D(_096_),
-    .Q(\fifomem.mem[6] [0])
+    .D(_120_),
+    .Q(\fifomem.mem[9] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _562_ (
+  sky130_fd_sc_hd__dfxtp_1 _528_ (
     .CLK(wclk),
-    .D(_097_),
-    .Q(\fifomem.mem[6] [1])
+    .D(_121_),
+    .Q(\fifomem.mem[9] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _563_ (
+  sky130_fd_sc_hd__dfxtp_1 _529_ (
     .CLK(wclk),
-    .D(_098_),
-    .Q(\fifomem.mem[6] [2])
+    .D(_122_),
+    .Q(\fifomem.mem[9] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _564_ (
+  sky130_fd_sc_hd__dfxtp_1 _530_ (
     .CLK(wclk),
-    .D(_099_),
-    .Q(\fifomem.mem[6] [3])
+    .D(_123_),
+    .Q(\fifomem.mem[9] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _565_ (
+  sky130_fd_sc_hd__dfxtp_1 _531_ (
     .CLK(wclk),
-    .D(_100_),
-    .Q(\fifomem.mem[6] [4])
+    .D(_124_),
+    .Q(\fifomem.mem[9] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _566_ (
+  sky130_fd_sc_hd__dfxtp_1 _532_ (
     .CLK(wclk),
-    .D(_101_),
-    .Q(\fifomem.mem[6] [5])
+    .D(_125_),
+    .Q(\fifomem.mem[9] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _567_ (
+  sky130_fd_sc_hd__dfxtp_1 _533_ (
     .CLK(wclk),
-    .D(_102_),
-    .Q(\fifomem.mem[6] [6])
+    .D(_126_),
+    .Q(\fifomem.mem[9] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _568_ (
+  sky130_fd_sc_hd__dfxtp_1 _534_ (
     .CLK(wclk),
-    .D(_103_),
-    .Q(\fifomem.mem[6] [7])
+    .D(_127_),
+    .Q(\fifomem.mem[9] [7])
   );
-  sky130_fd_sc_hd__dfxtp_1 _569_ (
-    .CLK(wclk),
-    .D(_088_),
-    .Q(\fifomem.mem[5] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _570_ (
-    .CLK(wclk),
-    .D(_089_),
-    .Q(\fifomem.mem[5] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _571_ (
-    .CLK(wclk),
-    .D(_090_),
-    .Q(\fifomem.mem[5] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _572_ (
-    .CLK(wclk),
-    .D(_091_),
-    .Q(\fifomem.mem[5] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _573_ (
-    .CLK(wclk),
-    .D(_092_),
-    .Q(\fifomem.mem[5] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _574_ (
-    .CLK(wclk),
-    .D(_093_),
-    .Q(\fifomem.mem[5] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _575_ (
-    .CLK(wclk),
-    .D(_094_),
-    .Q(\fifomem.mem[5] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _576_ (
-    .CLK(wclk),
-    .D(_095_),
-    .Q(\fifomem.mem[5] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _577_ (
-    .CLK(wclk),
-    .D(_064_),
-    .Q(\fifomem.mem[2] [0])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _578_ (
-    .CLK(wclk),
-    .D(_065_),
-    .Q(\fifomem.mem[2] [1])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _579_ (
-    .CLK(wclk),
-    .D(_066_),
-    .Q(\fifomem.mem[2] [2])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _580_ (
-    .CLK(wclk),
-    .D(_067_),
-    .Q(\fifomem.mem[2] [3])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _581_ (
-    .CLK(wclk),
-    .D(_068_),
-    .Q(\fifomem.mem[2] [4])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _582_ (
-    .CLK(wclk),
-    .D(_069_),
-    .Q(\fifomem.mem[2] [5])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _583_ (
-    .CLK(wclk),
-    .D(_070_),
-    .Q(\fifomem.mem[2] [6])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _584_ (
-    .CLK(wclk),
-    .D(_071_),
-    .Q(\fifomem.mem[2] [7])
-  );
-  sky130_fd_sc_hd__dfxtp_1 _585_ (
+  sky130_fd_sc_hd__dfxtp_1 _535_ (
     .CLK(wclk),
     .D(_112_),
     .Q(\fifomem.mem[8] [0])
   );
-  sky130_fd_sc_hd__dfxtp_1 _586_ (
+  sky130_fd_sc_hd__dfxtp_1 _536_ (
     .CLK(wclk),
     .D(_113_),
     .Q(\fifomem.mem[8] [1])
   );
-  sky130_fd_sc_hd__dfxtp_1 _587_ (
+  sky130_fd_sc_hd__dfxtp_1 _537_ (
     .CLK(wclk),
     .D(_114_),
     .Q(\fifomem.mem[8] [2])
   );
-  sky130_fd_sc_hd__dfxtp_1 _588_ (
+  sky130_fd_sc_hd__dfxtp_1 _538_ (
     .CLK(wclk),
     .D(_115_),
     .Q(\fifomem.mem[8] [3])
   );
-  sky130_fd_sc_hd__dfxtp_1 _589_ (
+  sky130_fd_sc_hd__dfxtp_1 _539_ (
     .CLK(wclk),
     .D(_116_),
     .Q(\fifomem.mem[8] [4])
   );
-  sky130_fd_sc_hd__dfxtp_1 _590_ (
+  sky130_fd_sc_hd__dfxtp_1 _540_ (
     .CLK(wclk),
     .D(_117_),
     .Q(\fifomem.mem[8] [5])
   );
-  sky130_fd_sc_hd__dfxtp_1 _591_ (
+  sky130_fd_sc_hd__dfxtp_1 _541_ (
     .CLK(wclk),
     .D(_118_),
     .Q(\fifomem.mem[8] [6])
   );
-  sky130_fd_sc_hd__dfxtp_1 _592_ (
+  sky130_fd_sc_hd__dfxtp_1 _542_ (
     .CLK(wclk),
     .D(_119_),
     .Q(\fifomem.mem[8] [7])
   );
-  sky130_fd_sc_hd__clkinv_1 _593_ (
-    .A(\rptr_empty.rq2_wptr [2]),
+  sky130_fd_sc_hd__dfxtp_1 _543_ (
+    .CLK(wclk),
+    .D(_104_),
+    .Q(\fifomem.mem[7] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _544_ (
+    .CLK(wclk),
+    .D(_105_),
+    .Q(\fifomem.mem[7] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _545_ (
+    .CLK(wclk),
+    .D(_106_),
+    .Q(\fifomem.mem[7] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _546_ (
+    .CLK(wclk),
+    .D(_107_),
+    .Q(\fifomem.mem[7] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _547_ (
+    .CLK(wclk),
+    .D(_108_),
+    .Q(\fifomem.mem[7] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _548_ (
+    .CLK(wclk),
+    .D(_109_),
+    .Q(\fifomem.mem[7] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _549_ (
+    .CLK(wclk),
+    .D(_110_),
+    .Q(\fifomem.mem[7] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _550_ (
+    .CLK(wclk),
+    .D(_111_),
+    .Q(\fifomem.mem[7] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _551_ (
+    .CLK(wclk),
+    .D(_096_),
+    .Q(\fifomem.mem[6] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _552_ (
+    .CLK(wclk),
+    .D(_097_),
+    .Q(\fifomem.mem[6] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _553_ (
+    .CLK(wclk),
+    .D(_098_),
+    .Q(\fifomem.mem[6] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _554_ (
+    .CLK(wclk),
+    .D(_099_),
+    .Q(\fifomem.mem[6] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _555_ (
+    .CLK(wclk),
+    .D(_100_),
+    .Q(\fifomem.mem[6] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _556_ (
+    .CLK(wclk),
+    .D(_101_),
+    .Q(\fifomem.mem[6] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _557_ (
+    .CLK(wclk),
+    .D(_102_),
+    .Q(\fifomem.mem[6] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _558_ (
+    .CLK(wclk),
+    .D(_103_),
+    .Q(\fifomem.mem[6] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _559_ (
+    .CLK(wclk),
+    .D(_088_),
+    .Q(\fifomem.mem[5] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _560_ (
+    .CLK(wclk),
+    .D(_089_),
+    .Q(\fifomem.mem[5] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _561_ (
+    .CLK(wclk),
+    .D(_090_),
+    .Q(\fifomem.mem[5] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _562_ (
+    .CLK(wclk),
+    .D(_091_),
+    .Q(\fifomem.mem[5] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _563_ (
+    .CLK(wclk),
+    .D(_092_),
+    .Q(\fifomem.mem[5] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _564_ (
+    .CLK(wclk),
+    .D(_093_),
+    .Q(\fifomem.mem[5] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _565_ (
+    .CLK(wclk),
+    .D(_094_),
+    .Q(\fifomem.mem[5] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _566_ (
+    .CLK(wclk),
+    .D(_095_),
+    .Q(\fifomem.mem[5] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _567_ (
+    .CLK(wclk),
+    .D(_080_),
+    .Q(\fifomem.mem[4] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _568_ (
+    .CLK(wclk),
+    .D(_081_),
+    .Q(\fifomem.mem[4] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _569_ (
+    .CLK(wclk),
+    .D(_082_),
+    .Q(\fifomem.mem[4] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _570_ (
+    .CLK(wclk),
+    .D(_083_),
+    .Q(\fifomem.mem[4] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _571_ (
+    .CLK(wclk),
+    .D(_084_),
+    .Q(\fifomem.mem[4] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _572_ (
+    .CLK(wclk),
+    .D(_085_),
+    .Q(\fifomem.mem[4] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _573_ (
+    .CLK(wclk),
+    .D(_086_),
+    .Q(\fifomem.mem[4] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _574_ (
+    .CLK(wclk),
+    .D(_087_),
+    .Q(\fifomem.mem[4] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _575_ (
+    .CLK(wclk),
+    .D(_072_),
+    .Q(\fifomem.mem[3] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _576_ (
+    .CLK(wclk),
+    .D(_073_),
+    .Q(\fifomem.mem[3] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _577_ (
+    .CLK(wclk),
+    .D(_074_),
+    .Q(\fifomem.mem[3] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _578_ (
+    .CLK(wclk),
+    .D(_075_),
+    .Q(\fifomem.mem[3] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _579_ (
+    .CLK(wclk),
+    .D(_076_),
+    .Q(\fifomem.mem[3] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _580_ (
+    .CLK(wclk),
+    .D(_077_),
+    .Q(\fifomem.mem[3] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _581_ (
+    .CLK(wclk),
+    .D(_078_),
+    .Q(\fifomem.mem[3] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _582_ (
+    .CLK(wclk),
+    .D(_079_),
+    .Q(\fifomem.mem[3] [7])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _583_ (
+    .CLK(wclk),
+    .D(_064_),
+    .Q(\fifomem.mem[2] [0])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _584_ (
+    .CLK(wclk),
+    .D(_065_),
+    .Q(\fifomem.mem[2] [1])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _585_ (
+    .CLK(wclk),
+    .D(_066_),
+    .Q(\fifomem.mem[2] [2])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _586_ (
+    .CLK(wclk),
+    .D(_067_),
+    .Q(\fifomem.mem[2] [3])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _587_ (
+    .CLK(wclk),
+    .D(_068_),
+    .Q(\fifomem.mem[2] [4])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _588_ (
+    .CLK(wclk),
+    .D(_069_),
+    .Q(\fifomem.mem[2] [5])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _589_ (
+    .CLK(wclk),
+    .D(_070_),
+    .Q(\fifomem.mem[2] [6])
+  );
+  sky130_fd_sc_hd__dfxtp_1 _590_ (
+    .CLK(wclk),
+    .D(_071_),
+    .Q(\fifomem.mem[2] [7])
+  );
+  sky130_fd_sc_hd__clkinv_1 _591_ (
+    .A(\fifomem.raddr [2]),
     .Y(_196_)
   );
-  sky130_fd_sc_hd__nand2b_1 _594_ (
-    .A_N(rempty),
-    .B(rinc),
+  sky130_fd_sc_hd__nor2b_1 _592_ (
+    .A(rempty),
+    .B_N(rinc),
     .Y(_197_)
   );
-  sky130_fd_sc_hd__nand3b_1 _595_ (
+  sky130_fd_sc_hd__nand3b_1 _593_ (
     .A_N(rempty),
     .B(rinc),
     .C(\fifomem.raddr [0]),
     .Y(_198_)
   );
-  sky130_fd_sc_hd__and4b_1 _596_ (
+  sky130_fd_sc_hd__and4b_1 _594_ (
     .A_N(rempty),
-    .B(rinc),
-    .C(\fifomem.raddr [0]),
-    .D(\fifomem.raddr [1]),
+    .B(\fifomem.raddr [1]),
+    .C(rinc),
+    .D(\fifomem.raddr [0]),
     .X(_199_)
   );
-  sky130_fd_sc_hd__xnor2_1 _597_ (
-    .A(\fifomem.raddr [1]),
-    .B(_198_),
-    .Y(\rptr_empty.rbinnext [1])
+  sky130_fd_sc_hd__and3_1 _595_ (
+    .A(\fifomem.raddr [3]),
+    .B(\fifomem.raddr [2]),
+    .C(_199_),
+    .X(_200_)
   );
-  sky130_fd_sc_hd__nor2_1 _598_ (
-    .A(\fifomem.raddr [2]),
-    .B(_199_),
-    .Y(_200_)
-  );
-  sky130_fd_sc_hd__xor2_1 _599_ (
-    .A(\fifomem.raddr [2]),
-    .B(_199_),
-    .X(\rptr_empty.rbinnext [2])
-  );
-  sky130_fd_sc_hd__nor2_1 _600_ (
-    .A(\rptr_empty.rbinnext [1]),
-    .B(\rptr_empty.rbinnext [2]),
+  sky130_fd_sc_hd__xnor2_1 _596_ (
+    .A(rptr[4]),
+    .B(_200_),
     .Y(_201_)
   );
-  sky130_fd_sc_hd__a21oi_1 _601_ (
-    .A1(\fifomem.raddr [2]),
-    .A2(\rptr_empty.rbinnext [1]),
-    .B1(_201_),
-    .Y(\rptr_empty.rgraynext [1])
+  sky130_fd_sc_hd__clkinv_1 _597_ (
+    .A(_201_),
+    .Y(\rptr_empty.rbinnext [4])
   );
-  sky130_fd_sc_hd__xor2_1 _602_ (
-    .A(\rptr_empty.rq2_wptr [1]),
-    .B(\rptr_empty.rgraynext [1]),
-    .X(_202_)
+  sky130_fd_sc_hd__xnor2_1 _598_ (
+    .A(\rptr_empty.rq2_wptr [4]),
+    .B(_201_),
+    .Y(_202_)
   );
-  sky130_fd_sc_hd__a21oi_1 _603_ (
-    .A1(\fifomem.raddr [2]),
-    .A2(_199_),
-    .B1(\fifomem.raddr [3]),
+  sky130_fd_sc_hd__nor2_1 _599_ (
+    .A(\fifomem.raddr [2]),
+    .B(_199_),
     .Y(_203_)
   );
-  sky130_fd_sc_hd__a21o_1 _604_ (
+  sky130_fd_sc_hd__xnor2_1 _600_ (
+    .A(\fifomem.raddr [3]),
+    .B(_203_),
+    .Y(\rptr_empty.rgraynext [2])
+  );
+  sky130_fd_sc_hd__xnor2_1 _601_ (
+    .A(\rptr_empty.rq2_wptr [2]),
+    .B(\rptr_empty.rgraynext [2]),
+    .Y(_204_)
+  );
+  sky130_fd_sc_hd__xnor2_1 _602_ (
+    .A(\fifomem.raddr [0]),
+    .B(_197_),
+    .Y(_205_)
+  );
+  sky130_fd_sc_hd__clkinv_1 _603_ (
+    .A(_205_),
+    .Y(\rptr_empty.rbinnext [0])
+  );
+  sky130_fd_sc_hd__xor2_1 _604_ (
+    .A(\fifomem.raddr [1]),
+    .B(_198_),
+    .X(_206_)
+  );
+  sky130_fd_sc_hd__clkinv_1 _605_ (
+    .A(_206_),
+    .Y(\rptr_empty.rbinnext [1])
+  );
+  sky130_fd_sc_hd__xor2_1 _606_ (
+    .A(\rptr_empty.rq2_wptr [0]),
+    .B(_206_),
+    .X(_207_)
+  );
+  sky130_fd_sc_hd__xnor2_1 _607_ (
+    .A(_205_),
+    .B(_207_),
+    .Y(_208_)
+  );
+  sky130_fd_sc_hd__a21oi_1 _608_ (
     .A1(\fifomem.raddr [2]),
     .A2(_199_),
     .B1(\fifomem.raddr [3]),
-    .X(_204_)
-  );
-  sky130_fd_sc_hd__xnor2_1 _605_ (
-    .A(rptr[4]),
-    .B(_203_),
-    .Y(\rptr_empty.rgraynext [3])
-  );
-  sky130_fd_sc_hd__xor2_1 _606_ (
-    .A(\rptr_empty.rq2_wptr [3]),
-    .B(\rptr_empty.rgraynext [3]),
-    .X(_205_)
-  );
-  sky130_fd_sc_hd__and3_1 _607_ (
-    .A(\fifomem.raddr [2]),
-    .B(\fifomem.raddr [3]),
-    .C(_199_),
-    .X(_206_)
-  );
-  sky130_fd_sc_hd__nand3_1 _608_ (
-    .A(\fifomem.raddr [2]),
-    .B(\fifomem.raddr [3]),
-    .C(_199_),
-    .Y(_207_)
+    .Y(_209_)
   );
   sky130_fd_sc_hd__xnor2_1 _609_ (
     .A(rptr[4]),
-    .B(_207_),
-    .Y(\rptr_empty.rbinnext [4])
+    .B(_209_),
+    .Y(\rptr_empty.rgraynext [3])
   );
-  sky130_fd_sc_hd__xnor3_1 _610_ (
-    .A(\rptr_empty.rq2_wptr [4]),
-    .B(rptr[4]),
-    .C(_207_),
-    .X(_208_)
+  sky130_fd_sc_hd__xor2_1 _610_ (
+    .A(\rptr_empty.rq2_wptr [3]),
+    .B(\rptr_empty.rgraynext [3]),
+    .X(_210_)
   );
   sky130_fd_sc_hd__xnor2_1 _611_ (
-    .A(\fifomem.raddr [0]),
-    .B(_197_),
-    .Y(\rptr_empty.rbinnext [0])
-  );
-  sky130_fd_sc_hd__xor2_1 _612_ (
-    .A(\rptr_empty.rq2_wptr [0]),
-    .B(\rptr_empty.rbinnext [1]),
-    .X(_209_)
-  );
-  sky130_fd_sc_hd__xnor2_1 _613_ (
-    .A(\rptr_empty.rbinnext [0]),
-    .B(_209_),
-    .Y(_210_)
-  );
-  sky130_fd_sc_hd__xnor2_1 _614_ (
-    .A(\fifomem.raddr [3]),
-    .B(_200_),
-    .Y(\rptr_empty.rgraynext [2])
-  );
-  sky130_fd_sc_hd__xnor2_1 _615_ (
-    .A(\rptr_empty.rq2_wptr [2]),
-    .B(\rptr_empty.rgraynext [2]),
+    .A(\fifomem.raddr [2]),
+    .B(_199_),
     .Y(_211_)
   );
-  sky130_fd_sc_hd__nand2_1 _616_ (
-    .A(_210_),
-    .B(_211_),
-    .Y(_212_)
+  sky130_fd_sc_hd__clkinv_1 _612_ (
+    .A(_211_),
+    .Y(\rptr_empty.rbinnext [2])
   );
-  sky130_fd_sc_hd__nor4_1 _617_ (
+  sky130_fd_sc_hd__xor2_1 _613_ (
+    .A(\rptr_empty.rq2_wptr [1]),
+    .B(_211_),
+    .X(_212_)
+  );
+  sky130_fd_sc_hd__xor2_1 _614_ (
+    .A(_206_),
+    .B(_211_),
+    .X(\rptr_empty.rgraynext [1])
+  );
+  sky130_fd_sc_hd__xnor2_1 _615_ (
+    .A(\rptr_empty.rq2_wptr [1]),
+    .B(\rptr_empty.rgraynext [1]),
+    .Y(_213_)
+  );
+  sky130_fd_sc_hd__nand3_1 _616_ (
+    .A(_204_),
+    .B(_208_),
+    .C(_213_),
+    .Y(_214_)
+  );
+  sky130_fd_sc_hd__nor3_1 _617_ (
     .A(_202_),
-    .B(_205_),
-    .C(_208_),
-    .D(_212_),
+    .B(_210_),
+    .C(_214_),
     .Y(\rptr_empty.rempty_val )
   );
   sky130_fd_sc_hd__nor2_1 _618_ (
-    .A(_203_),
+    .A(_205_),
     .B(_206_),
+    .Y(_215_)
+  );
+  sky130_fd_sc_hd__or2_0 _619_ (
+    .A(_200_),
+    .B(_209_),
+    .X(_216_)
+  );
+  sky130_fd_sc_hd__clkinv_1 _620_ (
+    .A(_216_),
     .Y(\rptr_empty.rbinnext [3])
   );
-  sky130_fd_sc_hd__nand3_1 _619_ (
-    .A(\fifomem.raddr [2]),
-    .B(\fifomem.raddr [1]),
-    .C(\rptr_empty.rbinnext [0]),
-    .Y(_213_)
-  );
-  sky130_fd_sc_hd__a21o_1 _620_ (
-    .A1(\fifomem.raddr [1]),
-    .A2(\rptr_empty.rbinnext [0]),
-    .B1(\rptr_empty.rbinnext [2]),
-    .X(_214_)
-  );
-  sky130_fd_sc_hd__and4_1 _621_ (
-    .A(\fifomem.raddr [2]),
-    .B(\fifomem.raddr [1]),
-    .C(\fifomem.raddr [3]),
-    .D(\rptr_empty.rbinnext [0]),
-    .X(_215_)
-  );
-  sky130_fd_sc_hd__nand4_1 _622_ (
-    .A(\fifomem.raddr [2]),
-    .B(\fifomem.raddr [1]),
-    .C(\fifomem.raddr [3]),
-    .D(\rptr_empty.rbinnext [0]),
-    .Y(_216_)
-  );
-  sky130_fd_sc_hd__a32oi_1 _623_ (
-    .A1(\fifomem.raddr [2]),
-    .A2(\fifomem.raddr [1]),
-    .A3(\rptr_empty.rbinnext [0]),
-    .B1(_207_),
-    .B2(_204_),
+  sky130_fd_sc_hd__o32ai_1 _621_ (
+    .A1(_196_),
+    .A2(_205_),
+    .A3(_206_),
+    .B1(_209_),
+    .B2(_200_),
     .Y(_217_)
   );
-  sky130_fd_sc_hd__and2_0 _624_ (
-    .A(_214_),
-    .B(_217_),
-    .X(_218_)
+  sky130_fd_sc_hd__o21ai_0 _622_ (
+    .A1(_205_),
+    .A2(_206_),
+    .B1(_211_),
+    .Y(_218_)
   );
-  sky130_fd_sc_hd__a211oi_1 _625_ (
-    .A1(_213_),
-    .A2(_214_),
-    .B1(_215_),
-    .C1(_217_),
+  sky130_fd_sc_hd__nand3_1 _623_ (
+    .A(\fifomem.raddr [3]),
+    .B(\fifomem.raddr [2]),
+    .C(_215_),
     .Y(_219_)
   );
-  sky130_fd_sc_hd__o21a_1 _626_ (
-    .A1(_218_),
-    .A2(_219_),
-    .B1(_196_),
-    .X(_220_)
+  sky130_fd_sc_hd__mux2i_1 _624_ (
+    .A0(_217_),
+    .A1(_216_),
+    .S(_218_),
+    .Y(_220_)
   );
-  sky130_fd_sc_hd__nor2_1 _627_ (
-    .A(\rptr_empty.rbinnext [1]),
-    .B(\rptr_empty.rbinnext [0]),
+  sky130_fd_sc_hd__xnor2_1 _625_ (
+    .A(\rptr_empty.rq2_wptr [2]),
+    .B(_220_),
     .Y(_221_)
   );
-  sky130_fd_sc_hd__xnor2_1 _628_ (
-    .A(\rptr_empty.rq2_wptr [1]),
-    .B(\rptr_empty.rbinnext [2]),
+  sky130_fd_sc_hd__nand2_1 _626_ (
+    .A(_205_),
+    .B(_206_),
     .Y(_222_)
   );
-  sky130_fd_sc_hd__xnor2_1 _629_ (
-    .A(_221_),
+  sky130_fd_sc_hd__xnor2_1 _627_ (
+    .A(_212_),
     .B(_222_),
     .Y(_223_)
   );
-  sky130_fd_sc_hd__nand2_1 _630_ (
-    .A(_209_),
+  sky130_fd_sc_hd__nor2_1 _628_ (
+    .A(_207_),
     .B(_223_),
     .Y(_224_)
   );
-  sky130_fd_sc_hd__xnor3_1 _631_ (
+  sky130_fd_sc_hd__xnor2_1 _629_ (
     .A(\rptr_empty.rq2_wptr [3]),
-    .B(rptr[4]),
-    .C(_206_),
-    .X(_225_)
+    .B(_201_),
+    .Y(_225_)
   );
-  sky130_fd_sc_hd__nand2_1 _632_ (
-    .A(_208_),
-    .B(_216_),
-    .Y(_226_)
-  );
-  sky130_fd_sc_hd__nor2_1 _633_ (
-    .A(_208_),
-    .B(_216_),
-    .Y(_227_)
-  );
-  sky130_fd_sc_hd__xnor2_1 _634_ (
+  sky130_fd_sc_hd__xor2_1 _630_ (
     .A(_217_),
     .B(_225_),
-    .Y(_228_)
+    .X(_226_)
   );
-  sky130_fd_sc_hd__o311ai_0 _635_ (
-    .A1(_196_),
-    .A2(_218_),
-    .A3(_219_),
-    .B1(_226_),
-    .C1(_228_),
-    .Y(_229_)
+  sky130_fd_sc_hd__xnor2_1 _631_ (
+    .A(_202_),
+    .B(_219_),
+    .Y(_227_)
   );
-  sky130_fd_sc_hd__nor4_1 _636_ (
-    .A(_220_),
-    .B(_224_),
-    .C(_227_),
-    .D(_229_),
+  sky130_fd_sc_hd__nor4b_1 _632_ (
+    .A(_221_),
+    .B(_227_),
+    .C(_226_),
+    .D_N(_224_),
     .Y(\rptr_empty.arempty_val )
   );
-  sky130_fd_sc_hd__a21oi_1 _637_ (
-    .A1(\fifomem.raddr [1]),
-    .A2(\rptr_empty.rbinnext [0]),
-    .B1(_221_),
+  sky130_fd_sc_hd__nor2b_1 _633_ (
+    .A(_215_),
+    .B_N(_222_),
     .Y(\rptr_empty.rgraynext [0])
   );
-  sky130_fd_sc_hd__dfrtp_1 _638_ (
+  sky130_fd_sc_hd__dfrtp_1 _634_ (
     .CLK(rclk),
     .D(\rptr_empty.rbinnext [0]),
     .Q(\fifomem.raddr [0]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _639_ (
+  sky130_fd_sc_hd__dfrtp_1 _635_ (
     .CLK(rclk),
     .D(\rptr_empty.rbinnext [1]),
     .Q(\fifomem.raddr [1]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _640_ (
+  sky130_fd_sc_hd__dfrtp_1 _636_ (
     .CLK(rclk),
     .D(\rptr_empty.rbinnext [2]),
     .Q(\fifomem.raddr [2]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _641_ (
+  sky130_fd_sc_hd__dfrtp_1 _637_ (
     .CLK(rclk),
     .D(\rptr_empty.rbinnext [3]),
     .Q(\fifomem.raddr [3]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _642_ (
+  sky130_fd_sc_hd__dfrtp_1 _638_ (
     .CLK(rclk),
     .D(\rptr_empty.rgraynext [0]),
     .Q(rptr[0]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _643_ (
+  sky130_fd_sc_hd__dfrtp_1 _639_ (
     .CLK(rclk),
     .D(\rptr_empty.rgraynext [1]),
     .Q(rptr[1]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _644_ (
+  sky130_fd_sc_hd__dfrtp_1 _640_ (
     .CLK(rclk),
     .D(\rptr_empty.rgraynext [2]),
     .Q(rptr[2]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _645_ (
+  sky130_fd_sc_hd__dfrtp_1 _641_ (
     .CLK(rclk),
     .D(\rptr_empty.rgraynext [3]),
     .Q(rptr[3]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _646_ (
+  sky130_fd_sc_hd__dfrtp_1 _642_ (
     .CLK(rclk),
     .D(\rptr_empty.rbinnext [4]),
     .Q(rptr[4]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfstp_2 _647_ (
+  sky130_fd_sc_hd__dfstp_2 _643_ (
     .CLK(rclk),
     .D(\rptr_empty.rempty_val ),
     .Q(rempty),
     .SET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _648_ (
+  sky130_fd_sc_hd__dfrtp_1 _644_ (
     .CLK(rclk),
     .D(\rptr_empty.arempty_val ),
     .Q(arempty),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _649_ (
+  sky130_fd_sc_hd__dfrtp_1 _645_ (
     .CLK(wclk),
     .D(rptr[0]),
     .Q(\sync_r2w.wq1_rptr [0]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _650_ (
+  sky130_fd_sc_hd__dfrtp_1 _646_ (
     .CLK(wclk),
     .D(rptr[1]),
     .Q(\sync_r2w.wq1_rptr [1]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _651_ (
+  sky130_fd_sc_hd__dfrtp_1 _647_ (
     .CLK(wclk),
     .D(rptr[2]),
     .Q(\sync_r2w.wq1_rptr [2]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _652_ (
+  sky130_fd_sc_hd__dfrtp_1 _648_ (
     .CLK(wclk),
     .D(rptr[3]),
     .Q(\sync_r2w.wq1_rptr [3]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _653_ (
+  sky130_fd_sc_hd__dfrtp_1 _649_ (
     .CLK(wclk),
     .D(rptr[4]),
     .Q(\sync_r2w.wq1_rptr [4]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _654_ (
+  sky130_fd_sc_hd__dfrtp_1 _650_ (
     .CLK(wclk),
     .D(\sync_r2w.wq1_rptr [0]),
     .Q(\sync_r2w.wq2_rptr [0]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _655_ (
+  sky130_fd_sc_hd__dfrtp_1 _651_ (
     .CLK(wclk),
     .D(\sync_r2w.wq1_rptr [1]),
     .Q(\sync_r2w.wq2_rptr [1]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _656_ (
+  sky130_fd_sc_hd__dfrtp_1 _652_ (
     .CLK(wclk),
     .D(\sync_r2w.wq1_rptr [2]),
     .Q(\sync_r2w.wq2_rptr [2]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _657_ (
+  sky130_fd_sc_hd__dfrtp_1 _653_ (
     .CLK(wclk),
     .D(\sync_r2w.wq1_rptr [3]),
     .Q(\sync_r2w.wq2_rptr [3]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _658_ (
+  sky130_fd_sc_hd__dfrtp_1 _654_ (
     .CLK(wclk),
     .D(\sync_r2w.wq1_rptr [4]),
     .Q(\sync_r2w.wq2_rptr [4]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _659_ (
+  sky130_fd_sc_hd__dfrtp_1 _655_ (
     .CLK(rclk),
     .D(\sync_w2r.wptr [0]),
     .Q(\sync_w2r.rq1_wptr [0]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _660_ (
+  sky130_fd_sc_hd__dfrtp_1 _656_ (
     .CLK(rclk),
     .D(\sync_w2r.wptr [1]),
     .Q(\sync_w2r.rq1_wptr [1]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _661_ (
+  sky130_fd_sc_hd__dfrtp_1 _657_ (
     .CLK(rclk),
     .D(\sync_w2r.wptr [2]),
     .Q(\sync_w2r.rq1_wptr [2]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _662_ (
+  sky130_fd_sc_hd__dfrtp_1 _658_ (
     .CLK(rclk),
     .D(\sync_w2r.wptr [3]),
     .Q(\sync_w2r.rq1_wptr [3]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _663_ (
+  sky130_fd_sc_hd__dfrtp_1 _659_ (
     .CLK(rclk),
     .D(\sync_w2r.wptr [4]),
     .Q(\sync_w2r.rq1_wptr [4]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _664_ (
+  sky130_fd_sc_hd__dfrtp_1 _660_ (
     .CLK(rclk),
     .D(\sync_w2r.rq1_wptr [0]),
     .Q(\rptr_empty.rq2_wptr [0]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _665_ (
+  sky130_fd_sc_hd__dfrtp_1 _661_ (
     .CLK(rclk),
     .D(\sync_w2r.rq1_wptr [1]),
     .Q(\rptr_empty.rq2_wptr [1]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _666_ (
+  sky130_fd_sc_hd__dfrtp_1 _662_ (
     .CLK(rclk),
     .D(\sync_w2r.rq1_wptr [2]),
     .Q(\rptr_empty.rq2_wptr [2]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _667_ (
+  sky130_fd_sc_hd__dfrtp_1 _663_ (
     .CLK(rclk),
     .D(\sync_w2r.rq1_wptr [3]),
     .Q(\rptr_empty.rq2_wptr [3]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _668_ (
+  sky130_fd_sc_hd__dfrtp_1 _664_ (
     .CLK(rclk),
     .D(\sync_w2r.rq1_wptr [4]),
     .Q(\rptr_empty.rq2_wptr [4]),
     .RESET_B(rrst_n)
   );
-  sky130_fd_sc_hd__clkinv_1 _669_ (
+  sky130_fd_sc_hd__clkinv_1 _665_ (
     .A(\fifomem.waddr [2]),
-    .Y(_230_)
+    .Y(_228_)
   );
-  sky130_fd_sc_hd__nor2b_1 _670_ (
+  sky130_fd_sc_hd__nor2b_1 _666_ (
     .A(wfull),
     .B_N(winc),
-    .Y(_231_)
+    .Y(_229_)
   );
-  sky130_fd_sc_hd__nand3b_1 _671_ (
+  sky130_fd_sc_hd__nand3b_1 _667_ (
     .A_N(wfull),
     .B(winc),
     .C(\fifomem.waddr [0]),
-    .Y(_232_)
+    .Y(_230_)
   );
-  sky130_fd_sc_hd__and4b_1 _672_ (
+  sky130_fd_sc_hd__and4b_1 _668_ (
     .A_N(wfull),
     .B(winc),
     .C(\fifomem.waddr [0]),
     .D(\fifomem.waddr [1]),
-    .X(_233_)
+    .X(_231_)
   );
-  sky130_fd_sc_hd__a21oi_1 _673_ (
+  sky130_fd_sc_hd__a21oi_1 _669_ (
     .A1(\fifomem.waddr [2]),
-    .A2(_233_),
+    .A2(_231_),
     .B1(\fifomem.waddr [3]),
-    .Y(_234_)
+    .Y(_232_)
   );
-  sky130_fd_sc_hd__xnor2_1 _674_ (
+  sky130_fd_sc_hd__xnor2_1 _670_ (
     .A(\sync_w2r.wptr [4]),
-    .B(_234_),
+    .B(_232_),
     .Y(\wptr_full.wgraynext [3])
   );
-  sky130_fd_sc_hd__xor2_1 _675_ (
+  sky130_fd_sc_hd__xor2_1 _671_ (
     .A(\sync_r2w.wq2_rptr [3]),
     .B(\wptr_full.wgraynext [3]),
-    .X(_235_)
+    .X(_233_)
   );
-  sky130_fd_sc_hd__xor2_1 _676_ (
+  sky130_fd_sc_hd__xor2_1 _672_ (
     .A(\fifomem.waddr [1]),
-    .B(_232_),
-    .X(_236_)
+    .B(_230_),
+    .X(_234_)
   );
-  sky130_fd_sc_hd__clkinv_1 _677_ (
-    .A(_236_),
+  sky130_fd_sc_hd__clkinv_1 _673_ (
+    .A(_234_),
     .Y(\wptr_full.wbinnext [1])
   );
-  sky130_fd_sc_hd__nor2_1 _678_ (
+  sky130_fd_sc_hd__nor2_1 _674_ (
     .A(\fifomem.waddr [2]),
-    .B(_233_),
-    .Y(_237_)
+    .B(_231_),
+    .Y(_235_)
   );
-  sky130_fd_sc_hd__xnor2_1 _679_ (
+  sky130_fd_sc_hd__xnor2_1 _675_ (
     .A(\fifomem.waddr [2]),
-    .B(_233_),
-    .Y(_238_)
+    .B(_231_),
+    .Y(_236_)
   );
-  sky130_fd_sc_hd__clkinv_1 _680_ (
-    .A(_238_),
+  sky130_fd_sc_hd__clkinv_1 _676_ (
+    .A(_236_),
     .Y(\wptr_full.wbinnext [2])
   );
-  sky130_fd_sc_hd__xor2_1 _681_ (
+  sky130_fd_sc_hd__xor2_1 _677_ (
     .A(\sync_r2w.wq2_rptr [1]),
-    .B(_238_),
-    .X(_239_)
+    .B(_236_),
+    .X(_237_)
   );
-  sky130_fd_sc_hd__xnor2_1 _682_ (
+  sky130_fd_sc_hd__xnor2_1 _678_ (
     .A(\wptr_full.wbinnext [1]),
-    .B(_238_),
+    .B(_236_),
     .Y(\wptr_full.wgraynext [1])
   );
-  sky130_fd_sc_hd__xnor2_1 _683_ (
-    .A(_236_),
-    .B(_239_),
-    .Y(_240_)
+  sky130_fd_sc_hd__xnor2_1 _679_ (
+    .A(_234_),
+    .B(_237_),
+    .Y(_238_)
   );
-  sky130_fd_sc_hd__and3_1 _684_ (
+  sky130_fd_sc_hd__and3_1 _680_ (
     .A(\fifomem.waddr [2]),
     .B(\fifomem.waddr [3]),
-    .C(_233_),
-    .X(_241_)
+    .C(_231_),
+    .X(_239_)
   );
-  sky130_fd_sc_hd__xor2_1 _685_ (
+  sky130_fd_sc_hd__xor2_1 _681_ (
     .A(\sync_w2r.wptr [4]),
-    .B(_241_),
+    .B(_239_),
     .X(\wptr_full.wbinnext [4])
   );
-  sky130_fd_sc_hd__xnor3_1 _686_ (
+  sky130_fd_sc_hd__xnor3_1 _682_ (
     .A(\sync_r2w.wq2_rptr [4]),
     .B(\sync_w2r.wptr [4]),
-    .C(_241_),
-    .X(_242_)
+    .C(_239_),
+    .X(_240_)
   );
-  sky130_fd_sc_hd__xnor2_1 _687_ (
+  sky130_fd_sc_hd__xnor2_1 _683_ (
     .A(\fifomem.waddr [3]),
-    .B(_237_),
+    .B(_235_),
     .Y(\wptr_full.wgraynext [2])
   );
-  sky130_fd_sc_hd__xor2_1 _688_ (
+  sky130_fd_sc_hd__xor2_1 _684_ (
     .A(\sync_r2w.wq2_rptr [2]),
     .B(\wptr_full.wgraynext [2]),
-    .X(_243_)
+    .X(_241_)
   );
-  sky130_fd_sc_hd__xnor2_1 _689_ (
+  sky130_fd_sc_hd__xnor2_1 _685_ (
     .A(\fifomem.waddr [0]),
-    .B(_231_),
-    .Y(_244_)
+    .B(_229_),
+    .Y(_242_)
   );
-  sky130_fd_sc_hd__clkinv_1 _690_ (
-    .A(_244_),
+  sky130_fd_sc_hd__clkinv_1 _686_ (
+    .A(_242_),
     .Y(\wptr_full.wbinnext [0])
   );
-  sky130_fd_sc_hd__xnor2_1 _691_ (
+  sky130_fd_sc_hd__xnor2_1 _687_ (
     .A(\sync_r2w.wq2_rptr [0]),
     .B(\wptr_full.wbinnext [1]),
-    .Y(_245_)
+    .Y(_243_)
   );
-  sky130_fd_sc_hd__xnor2_1 _692_ (
-    .A(_244_),
-    .B(_245_),
-    .Y(_246_)
-  );
-  sky130_fd_sc_hd__nand3_1 _693_ (
-    .A(_235_),
-    .B(_240_),
-    .C(_246_),
-    .Y(_247_)
-  );
-  sky130_fd_sc_hd__nor3_1 _694_ (
+  sky130_fd_sc_hd__xnor2_1 _688_ (
     .A(_242_),
     .B(_243_),
-    .C(_247_),
+    .Y(_244_)
+  );
+  sky130_fd_sc_hd__nand3_1 _689_ (
+    .A(_233_),
+    .B(_238_),
+    .C(_244_),
+    .Y(_245_)
+  );
+  sky130_fd_sc_hd__nor3_1 _690_ (
+    .A(_240_),
+    .B(_241_),
+    .C(_245_),
     .Y(\wptr_full.wfull_val )
   );
-  sky130_fd_sc_hd__nor2_1 _695_ (
-    .A(_236_),
-    .B(_244_),
-    .Y(_248_)
+  sky130_fd_sc_hd__nor2_1 _691_ (
+    .A(_234_),
+    .B(_242_),
+    .Y(_246_)
   );
-  sky130_fd_sc_hd__nand4_1 _696_ (
+  sky130_fd_sc_hd__nand4_1 _692_ (
     .A(\fifomem.waddr [2]),
     .B(\fifomem.waddr [3]),
     .C(\wptr_full.wbinnext [1]),
     .D(\wptr_full.wbinnext [0]),
-    .Y(_249_)
+    .Y(_247_)
   );
-  sky130_fd_sc_hd__nor2_1 _697_ (
+  sky130_fd_sc_hd__nor2_1 _693_ (
     .A(\wptr_full.wbinnext [1]),
     .B(\wptr_full.wbinnext [0]),
+    .Y(_248_)
+  );
+  sky130_fd_sc_hd__nand2_1 _694_ (
+    .A(_234_),
+    .B(_242_),
+    .Y(_249_)
+  );
+  sky130_fd_sc_hd__a21oi_1 _695_ (
+    .A1(_237_),
+    .A2(_249_),
+    .B1(_243_),
     .Y(_250_)
   );
-  sky130_fd_sc_hd__nand2_1 _698_ (
-    .A(_236_),
-    .B(_244_),
-    .Y(_251_)
+  sky130_fd_sc_hd__xor2_1 _696_ (
+    .A(_240_),
+    .B(_247_),
+    .X(_251_)
   );
-  sky130_fd_sc_hd__a21oi_1 _699_ (
-    .A1(_239_),
-    .A2(_251_),
-    .B1(_245_),
+  sky130_fd_sc_hd__o211ai_1 _697_ (
+    .A1(_237_),
+    .A2(_249_),
+    .B1(_250_),
+    .C1(_251_),
     .Y(_252_)
   );
-  sky130_fd_sc_hd__xor2_1 _700_ (
-    .A(_242_),
-    .B(_249_),
-    .X(_253_)
-  );
-  sky130_fd_sc_hd__o211ai_1 _701_ (
-    .A1(_239_),
-    .A2(_251_),
-    .B1(_252_),
-    .C1(_253_),
-    .Y(_254_)
-  );
-  sky130_fd_sc_hd__nor2_1 _702_ (
-    .A(_234_),
-    .B(_241_),
+  sky130_fd_sc_hd__nor2_1 _698_ (
+    .A(_232_),
+    .B(_239_),
     .Y(\wptr_full.wbinnext [3])
   );
-  sky130_fd_sc_hd__o32a_1 _703_ (
-    .A1(_230_),
-    .A2(_236_),
-    .A3(_244_),
-    .B1(_241_),
-    .B2(_234_),
-    .X(_255_)
+  sky130_fd_sc_hd__o32a_1 _699_ (
+    .A1(_228_),
+    .A2(_234_),
+    .A3(_242_),
+    .B1(_239_),
+    .B2(_232_),
+    .X(_253_)
   );
-  sky130_fd_sc_hd__xnor2_1 _704_ (
+  sky130_fd_sc_hd__xnor2_1 _700_ (
     .A(\sync_r2w.wq2_rptr [3]),
     .B(\wptr_full.wbinnext [4]),
+    .Y(_254_)
+  );
+  sky130_fd_sc_hd__xnor2_1 _701_ (
+    .A(_253_),
+    .B(_254_),
+    .Y(_255_)
+  );
+  sky130_fd_sc_hd__o21ai_0 _702_ (
+    .A1(_234_),
+    .A2(_242_),
+    .B1(_236_),
     .Y(_256_)
   );
-  sky130_fd_sc_hd__xnor2_1 _705_ (
-    .A(_255_),
-    .B(_256_),
+  sky130_fd_sc_hd__mux2i_1 _703_ (
+    .A0(_253_),
+    .A1(\wptr_full.wbinnext [3]),
+    .S(_256_),
     .Y(_257_)
   );
-  sky130_fd_sc_hd__o21ai_0 _706_ (
-    .A1(_236_),
-    .A2(_244_),
-    .B1(_238_),
-    .Y(_258_)
-  );
-  sky130_fd_sc_hd__mux2i_1 _707_ (
-    .A0(_255_),
-    .A1(\wptr_full.wbinnext [3]),
-    .S(_258_),
-    .Y(_259_)
-  );
-  sky130_fd_sc_hd__xor2_1 _708_ (
+  sky130_fd_sc_hd__xor2_1 _704_ (
     .A(\sync_r2w.wq2_rptr [2]),
-    .B(_259_),
-    .X(_260_)
-  );
-  sky130_fd_sc_hd__nor3_1 _709_ (
-    .A(_254_),
     .B(_257_),
-    .C(_260_),
+    .X(_258_)
+  );
+  sky130_fd_sc_hd__nor3_1 _705_ (
+    .A(_252_),
+    .B(_255_),
+    .C(_258_),
     .Y(\wptr_full.awfull_val )
   );
-  sky130_fd_sc_hd__nor2_1 _710_ (
-    .A(_248_),
-    .B(_250_),
+  sky130_fd_sc_hd__nor2_1 _706_ (
+    .A(_246_),
+    .B(_248_),
     .Y(\wptr_full.wgraynext [0])
   );
-  sky130_fd_sc_hd__dfrtp_1 _711_ (
+  sky130_fd_sc_hd__dfrtp_1 _707_ (
     .CLK(wclk),
     .D(\wptr_full.wbinnext [0]),
     .Q(\fifomem.waddr [0]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _712_ (
+  sky130_fd_sc_hd__dfrtp_1 _708_ (
     .CLK(wclk),
     .D(\wptr_full.wbinnext [1]),
     .Q(\fifomem.waddr [1]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _713_ (
+  sky130_fd_sc_hd__dfrtp_1 _709_ (
     .CLK(wclk),
     .D(\wptr_full.wbinnext [2]),
     .Q(\fifomem.waddr [2]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _714_ (
+  sky130_fd_sc_hd__dfrtp_1 _710_ (
     .CLK(wclk),
     .D(\wptr_full.wbinnext [3]),
     .Q(\fifomem.waddr [3]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _715_ (
+  sky130_fd_sc_hd__dfrtp_1 _711_ (
     .CLK(wclk),
     .D(\wptr_full.wgraynext [0]),
     .Q(\sync_w2r.wptr [0]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _716_ (
+  sky130_fd_sc_hd__dfrtp_1 _712_ (
     .CLK(wclk),
     .D(\wptr_full.wgraynext [1]),
     .Q(\sync_w2r.wptr [1]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _717_ (
+  sky130_fd_sc_hd__dfrtp_1 _713_ (
     .CLK(wclk),
     .D(\wptr_full.wgraynext [2]),
     .Q(\sync_w2r.wptr [2]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _718_ (
+  sky130_fd_sc_hd__dfrtp_1 _714_ (
     .CLK(wclk),
     .D(\wptr_full.wgraynext [3]),
     .Q(\sync_w2r.wptr [3]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _719_ (
+  sky130_fd_sc_hd__dfrtp_1 _715_ (
     .CLK(wclk),
     .D(\wptr_full.wbinnext [4]),
     .Q(\sync_w2r.wptr [4]),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _720_ (
+  sky130_fd_sc_hd__dfrtp_1 _716_ (
     .CLK(wclk),
     .D(\wptr_full.wfull_val ),
     .Q(wfull),
     .RESET_B(wrst_n)
   );
-  sky130_fd_sc_hd__dfrtp_1 _721_ (
+  sky130_fd_sc_hd__dfrtp_1 _717_ (
     .CLK(wclk),
     .D(\wptr_full.awfull_val ),
     .Q(awfull),

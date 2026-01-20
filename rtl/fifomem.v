@@ -27,6 +27,12 @@ module fifomem // dung lượng = 2^4 x 8 = 128 bits
     reg [DATASIZE-1:0] mem [0:DEPTH-1];
     reg [DATASIZE-1:0] rdata_r; // “buffer / register tạm thời” cho output khi dùng chế độ registered read
 
+    integer i;
+    initial begin
+    for (i=0; i<DEPTH; i=i+1)
+        mem[i] = 0;
+    end
+
     always @(posedge wclk) begin
         if (wclken && !wfull)
             mem[waddr] <= wdata;
