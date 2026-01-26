@@ -10,7 +10,7 @@ module consumer #(
     output reg         rinc,
     input  [DSIZE-1:0] rdata,
     output reg         consumer_active,
-    output reg [31:0]  active_cycles
+    output reg consumer_active_cycles
 );
 
     reg state;
@@ -27,7 +27,7 @@ module consumer #(
             idle_cnt <= 0;
             burst_cnt <= 0;
             consumer_active <= 0;
-            active_cycles <= 0;
+            consumer_active_cycles <= 0;
         end else begin
             case (state)
                 IDLE: begin
@@ -53,7 +53,7 @@ module consumer #(
             endcase
 
             if (consumer_active)
-                active_cycles <= active_cycles + 1;
+                consumer_active_cycles <= consumer_active_cycles + 1;
         end
     end
 

@@ -5,8 +5,8 @@ link_design  system_async_fifo_top
 read_sdc async_fifo_frequency.sdc
 
 set_clock_groups -asynchronous \
-  -group [get_clocks wclk] \
-  -group [get_clocks rclk]
+  -group [get_clocks WCLK] \
+  -group [get_clocks RCLK]
 
 report_checks -path_delay max
 report_power

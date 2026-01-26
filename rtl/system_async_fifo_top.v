@@ -20,9 +20,10 @@ module system_async_fifo_top #(
     wire                 winc;
     wire [DSIZE-1:0]     wdata;
     wire                 rinc;
-
-    wire                 prod_active, active_cycles ;
-    wire                 cons_active;
+    
+    wire producer_active_cycles, consumer_active_cycles;
+    wire                 prod_active ;
+    wire                 cons_active ;
 
     /* ================= CLOCK GATING (SYSTEM LEVEL) ================= */
     wire wclk_gated = wclk_raw & prod_active;
@@ -41,7 +42,7 @@ module system_async_fifo_top #(
         .winc(winc),
         .wdata(wdata),
         .producer_active(prod_active), 
-        .active_cycles(prod_active_cycles)
+        .producer_active_cycles(producer_active_cycles)
     );
 
     /* ================= CONSUMER (LIGHT FSM) ================= */
@@ -57,7 +58,7 @@ module system_async_fifo_top #(
         .rinc(rinc),
         .rdata(rdata_o),
         .consumer_active(cons_active), 
-        .active_cycles(cons_active_cycles)
+        .consumer_active_cycles(consumer_active_cycles)
     );
 
     /* ================= ASYNC FIFO ================= */

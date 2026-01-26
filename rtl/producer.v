@@ -12,7 +12,7 @@ module producer #(
     output reg         winc,
     output reg [DSIZE-1:0] wdata,
     output reg         producer_active, 
-    output reg [31:0] active_cycles  
+    output reg  producer_active_cycles  
 );
 
     reg state;
@@ -28,7 +28,7 @@ always @(posedge wclk_raw or negedge rst_n) begin
         state <= IDLE;
         idle_cnt <= 0;
         producer_active <= 0;
-        active_cycles <= 0;
+        producer_active_cycles <= 0;
     end else begin
         // FSM
         case (state)
@@ -53,7 +53,7 @@ always @(posedge wclk_raw or negedge rst_n) begin
 
         // activity counter
         if (producer_active)
-            active_cycles <= active_cycles + 1;
+            producer_active_cycles <= producer_active_cycles + 1;
     end
 end
 
