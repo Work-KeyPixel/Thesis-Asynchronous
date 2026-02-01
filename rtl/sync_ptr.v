@@ -7,7 +7,7 @@
 module sync_ptr
 
     #(
-    parameter ASIZE = 4
+    parameter ASIZE = 6
     )(
     input  wire              dest_clk,
     input  wire              dest_rst_n,

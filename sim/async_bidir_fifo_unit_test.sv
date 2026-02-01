@@ -5,7 +5,7 @@ module async_bidir_fifo_unit_test_duplex;
 
     // ================= PARAMETERS =================
     localparam DW    = 32;
-    localparam ASIZE = 4;
+    localparam ASIZE = ;
     localparam DEPTH = 2**ASIZE; // 16 words
     integer i;
     integer timeout = 0;

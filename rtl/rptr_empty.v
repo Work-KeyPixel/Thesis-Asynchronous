@@ -7,7 +7,7 @@
 module rptr_empty
 
     #(
-    parameter ADDRSIZE = 4
+    parameter ADDRSIZE = 6
     )(
     input  wire                rclk,
     input  wire                rrst_n,

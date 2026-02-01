@@ -8,7 +8,7 @@ module async_fifo
 
     #(
         parameter DSIZE = 8,
-        parameter ASIZE = 4,
+        parameter ASIZE = 6,
         parameter FALLTHROUGH = "TRUE" // First word fall-through without latency
     )(
         input  wire             wclk,

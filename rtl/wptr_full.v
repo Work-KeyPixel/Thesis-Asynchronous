@@ -7,7 +7,7 @@
 module wptr_full
 
 	#(
-		parameter ADDRSIZE = 4 // số bit địa chỉ cho memory (Depth = 2^ADDRSIZE)
+		parameter ADDRSIZE = 6 // số bit địa chỉ cho memory (Depth = 2^ADDRSIZE)
 	)(
 		input  wire                wclk, // write clock domain
 		input  wire                wrst_n, // reset write domain (active low)

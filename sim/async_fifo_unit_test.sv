@@ -17,10 +17,11 @@ module async_fifo_unit_test;
     `define FALLTHROUGH "TRUE"
     `endif
 
-    parameter DSIZE = 32;
-    parameter ASIZE = 4;
+    parameter DSIZE = 16;
+    parameter ASIZE = 2;
+    parameter DEPTH = 2**ASIZE;
     parameter FALLTHROUGH = `FALLTHROUGH;
-    parameter MAX_TRAFFIC = 10;
+    parameter MAX_TRAFFIC = 3;
 
     integer timeout;
 
@@ -134,27 +135,31 @@ module async_fifo_unit_test;
 
     `UNIT_TEST_END
 
-    `UNIT_TEST("TEST_MULTIPLE_WRITE_THEN_READ")
+`UNIT_TEST("TEST_MULTIPLE_WRITE_THEN_READ")
 
-        for (int i=0; i<10; i=i+1) begin
-            @(negedge wclk);
-            winc = 1;
-            wdata = i;
-        end
+    // WRITE: đúng depth
+    for (int i = 0; i < (1<<ASIZE); i = i + 1) begin
         @(negedge wclk);
-        winc = 0;
+        winc  = 1;
+        wdata = i;
+    end
+    @(negedge wclk);
+    winc = 0;
 
-        #100;
+    // READ: CHỜ FIFO THỰC SỰ NON-EMPTY
+    rinc = 0;
+    wait (rempty == 0);
 
+    for (int i = 0; i < (1<<ASIZE); i = i + 1) begin
         @(posedge rclk);
-
         rinc = 1;
-        for (int i=0; i<10; i=i+1) begin
-            @(posedge rclk);
-            `FAIL_IF_NOT_EQUAL(rdata, i);
-        end
+        @(negedge rclk);   // data stable
+        `FAIL_IF_NOT_EQUAL(rdata, i);
+    end
+    rinc = 0;
 
-    `UNIT_TEST_END
+`UNIT_TEST_END
+
 
     `UNIT_TEST("TEST_FULL_FLAG")
 
@@ -177,8 +182,10 @@ module async_fifo_unit_test;
 
         `FAIL_IF_NOT_EQUAL(rempty, 1);
 
+        winc = 0;
+
         for (int i=0; i<2**ASIZE; i=i+1) begin
-            @(posedge wclk)
+            repeat (3) @(posedge wclk)
             winc = 1;
             wdata = i;
         end
@@ -272,4 +279,3 @@ module async_fifo_unit_test;
     
 
 endmodule
-

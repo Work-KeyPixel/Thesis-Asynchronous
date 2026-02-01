@@ -8,7 +8,7 @@ module fifomem // dung lượng = 2^4 x 8 = 128 bits
 
     #(
         parameter  DATASIZE = 8,    // Memory data word width (mỗi ô nhớ rộng 8 bits)
-        parameter  ADDRSIZE = 4,    // Number of mem address bits (có 4 ô nhớ)
+        parameter  ADDRSIZE = 6,    // Number of mem address bits (có 4 ô nhớ)
         parameter  FALLTHROUGH = "TRUE" // First word fall-through
     ) (
         input  wire                wclk,

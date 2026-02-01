@@ -7,7 +7,7 @@
 module sync_w2r
 
     #(
-    parameter ASIZE = 4
+    parameter ASIZE = 6
     )(
     input  wire              rclk,
     input  wire              rrst_n,

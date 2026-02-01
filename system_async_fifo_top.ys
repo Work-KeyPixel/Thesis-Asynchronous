@@ -19,6 +19,6 @@ abc -liberty lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 flatten
 clean -purge
 
-stat
+stat -liberty lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 write_verilog -noattr -noexpr system_async_fifo_top_sta.v
